@@ -19,7 +19,7 @@ list: ## Show dot files in this repository
 init: ## Setup environment settings
 	@$(foreach val, $(DOTFILES), $(MAKE) init -C $(DISTRIBUTION)/$(val);)
 
-install: update deploy init ## Run make update, deploy, init
+install: update check deploy init ## Run make update, deploy, init
 	@echo 'Run setup dotfiles...'
 
 update: ## Fetch changes for this repo
@@ -31,6 +31,10 @@ update: ## Fetch changes for this repo
 uninstall: ## Remove deployed dotfile.
 	@echo 'Remove deployed dotfile in home directory.'
 	@$(foreach val, $(DOTFILES), $(MAKE) uninstall -C $(DISTRIBUTION)/$(val);)
+
+check: ## Check required package in your system.
+	@echo 'Check required package.'
+	@./script/checkpackage ./docs/
 
 clean: ## Remove all dotfiles
 	@echo 'Remove all dotfiles in home directory.'
