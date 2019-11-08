@@ -1,0 +1,101 @@
+# dotfiles
+
+![Version](https://img.shields.io/github/tag/LeavaTail/dotfiles.svg)
+[![MIT License](https://img.shields.io/github/license/LeavaTail/dotfiles.svg)](http://opensource.org/licenses/MIT)
+
+Linux用の設定ファイル群
+
+## Description
+![demo](https://raw.github.com/wiki/LeavaTail/dotfiles/demo.gif)
+
+このリポジトリには、以下の設定ファイルが保存されています。
+  * zsh
+  * tmux
+  * emacs
+  * vim
+  * tex
+  * screen
+
+## Install
+### Requirements
+  * [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)パッチが当てられたフォント
+  * git
+  * make
+  * zsh
+  * tmux
+  * emacs
+  * vim (luaかPython3が有効であること)
+  * neovim
+  * gcc
+  * Python3
+  * wamerican
+  * texlive
+  * latexmk
+  * screen
+
+### Install
+下記のコマンドを実行するだけでデプロイが完了します。
+```
+$ make install
+```
+
+### Uninstall
+デプロイした設定ファイルを削除するには、以下のコマンドを実行する必要があります。
+```
+ $ make uninstall
+```
+
+## Commands
+`make deploy`
+
+設定ファイルをデプロイする
+
+
+`make list`
+
+リンクされるドットファイルをリストする
+
+
+`make init` **未実装**
+
+各種アプリケーションの設定ファイル以外の環境設定などを実施する
+
+
+`make install`
+
+設定ファイルをデプロイし、各種アプリケーションの初期設定を実施する
+
+
+`make update`
+
+設定ファイルをリモートの最新リポジトリの状態に更新する
+
+
+`make uninstall`
+
+デプロイされたドットファイルのみ削除する
+
+
+`make clean`
+
+該当するドットファイルをすべて削除する
+
+
+`make test`
+
+ドットファイルが正常に展開されたか検証する
+
+
+`make help`
+
+ターゲットの詳細説明を表示する
+
+
+## Usage
+それぞれの設定ファイルについて説明します。
+
+## Authors
+[LeavaTail](https://github.com/LeavaTail)
+
+## Licence
+[MIT License](./LICENSE)

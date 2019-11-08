@@ -1,0 +1,27 @@
+# Encoding
+defencoding utf-8
+
+# Prefix key
+# escape ^Ww
+
+# color scheme
+defbce on
+term xterm-256color
+
+# Delete start up screen
+startup_message off
+
+# Auto detach
+autodetach on
+
+# scroll buffer history
+defscrollback 1000
+
+#logging
+log on
+deflog on
+logfile "$HOME/.log/screen/%Y%m%d-%n.log"
+
+# Show date abd screen list
+hardstatus alwayslastline "%{= rw} %H %{= wk}%-Lw%{= bw}%n%f* %t%{= wk}%+Lw %{= wk}%=%{= gk} %y/%m/%d %c "
+
