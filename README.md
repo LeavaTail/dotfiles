@@ -18,20 +18,10 @@ Linux用の設定ファイル群
 
 ## Install
 ### Requirements
-  * [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)パッチが当てられたフォント
-  * git
-  * make
-  * zsh
-  * tmux
-  * emacs
-  * vim (luaかPython3が有効であること)
-  * neovim
-  * gcc
-  * Python3
-  * wamerican
-  * texlive
-  * latexmk
-  * screen
+Check below files.
+ * [common Required packages](docs/Requirements_common)
+ * [about zsh Required packages](docs/Requirements_zsh)
+ * [about vim Required packages](docs/Requirements_vim)
 
 ### Install
 下記のコマンドを実行するだけでデプロイが完了します。
@@ -60,6 +50,9 @@ $ make install
 
 各種アプリケーションの設定ファイル以外の環境設定などを実施する
 
+`make check`
+
+デプロイに必要なパッケージが揃っているかどうかを確認する
 
 `make install`
 
