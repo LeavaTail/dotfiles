@@ -1,12 +1,11 @@
 # dotfiles
 
 ![Version](https://img.shields.io/github/tag/LeavaTail/dotfiles.svg)
-[![MIT License](https://img.shields.io/github/license/LeavaTail/dotfiles.svg)](http://opensource.org/licenses/MIT)
 
 Linux用の設定ファイル群
 
 ## Description
-![demo](https://raw.github.com/wiki/LeavaTail/dotfiles/demo.gif)
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim.png)
 
 このリポジトリには、以下の設定ファイルが保存されています。
   * zsh
@@ -89,6 +88,3 @@ $ make install
 
 ## Authors
 [LeavaTail](https://github.com/LeavaTail)
-
-## Licence
-[MIT License](./LICENSE)
