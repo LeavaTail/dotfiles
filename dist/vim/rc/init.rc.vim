@@ -1,4 +1,3 @@
-filetype off												" 一旦ファイルタイプ関連を無効化する
 set scrolloff=5												" スクロールするときに下が見えるようにする
 syntax enable												" 構文チェック
 set backspace=indent,eol,start								" delete で各種消せるようにする
@@ -38,11 +37,8 @@ set imsearch=-1												" 検索モード時にIMEをデフォルトオンに
 set laststatus=2											" ステータスライン
 set cmdheight=2												" メッセージ表示欄
 set gdefault												" 置換の時 g オプションをデフォルトで有効にする
-set ruler													" カーソルが何行目の何列目に置かれているかを表示する
 
 " タブ補完
-set wildmenu												" コマンドラインモードの文字入力時に補完機能をオンにする
-set wildmode=list:longest									" マッチするものをリスト表示しるる、共通する最長の部分まで保管
 
 set pastetoggle=<F12>										" ペースト
 set timeoutlen=10											" ESCキーが押されてからの待ち時間
@@ -61,10 +57,3 @@ set viminfo+=n~/.vim/temp/.viminfo
 
 set autoread												" 編集中のファイルが変更されたら自動で読み直す
 set wildmenu wildmode=list:full  							"onにするとvimからファイルを開くときにリストを表示する
-
-" 自動コメントアウトの無効
-augroup auto_comment_off
-	autocmd!
-	autocmd BufEnter * setlocal formatoptions-=r
-	autocmd BufEnter * setlocal formatoptions-=o
-augroup END
