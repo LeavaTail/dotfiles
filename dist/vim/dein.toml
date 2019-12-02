@@ -8,11 +8,9 @@ build = 'make'
 
 # カラースキーム
 [[plugins]]
-repo = 'tomasr/molokai'
+repo = 'joshdick/onedark.vim'
 hook_add = '''
-    colorscheme molokai
-    let g:molokai_original = 1
-    let g:rehash256 = 1
+colorscheme onedark
 '''
 
 # スニペットの定義プラグイン
