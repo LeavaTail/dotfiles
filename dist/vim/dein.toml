@@ -14,22 +14,6 @@ colorscheme onedark
 '''
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-hook_add = '''
-  let g:indent_guides_enable_on_vim_startup=1
-  source ~/.vim/plugins/indent-guides.rc.vim
-'''
-
-# undoツリーのグラフィックス表示
-[[plugins]]
-repo = 'sjl/gundo.vim'
-if = "has('python') || has('python3')"
-hook_add = 'source ~/.vim/plugins/gundo.rc.vim'
-
-[[plugins]]
 repo = 'Lokaltog/vim-easymotion'
 hook_add= 'source ~/.vim/plugins/easymotion.rc.vim'
 
@@ -44,11 +28,6 @@ hook_add = '''
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add= 'source ~/.vim/plugins/gitgutter.rc.vim'
-
-[[plugins]]
-repo = 'mbbill/undotree'
-if = "!has('python') && !has('python3')"
-hook_add= 'source ~/.vim/plugins/undotree.rc.vim'
 
 # ステータスバーのレイアウト変更
 [[plugins]]
