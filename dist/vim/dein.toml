@@ -24,6 +24,8 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'w0rp/ale'
+hook_add= 'source ~/.vim/plugins/ale.rc.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
