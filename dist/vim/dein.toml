@@ -13,10 +13,6 @@ hook_add = '''
 colorscheme onedark
 '''
 
-# スニペットの定義プラグイン
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
@@ -26,9 +22,6 @@ hook_add = '''
   let g:indent_guides_enable_on_vim_startup=1
   source ~/.vim/plugins/indent-guides.rc.vim
 '''
-
-[[plugins]]
-repo = 'ujihisa/neco-look'
 
 # undoツリーのグラフィックス表示
 [[plugins]]
@@ -41,26 +34,12 @@ repo = 'Lokaltog/vim-easymotion'
 hook_add= 'source ~/.vim/plugins/easymotion.rc.vim'
 
 [[plugins]]
-repo = 'Shougo/vimshell'
-hook_add= 'source ~/.vim/plugins/vimshell.rc.vim'
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add= 'source ~/.vim/plugins/nerdtree.rc.vim'
-
-[[plugins]]
 repo = 'ryanoasis/vim-devicons'
-depends = ['nerdtree']
 hook_add = '''
     let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 '''
 
-# vimでdeopleteを実行するための設定
 [[plugins]]
-repo = 'roxma/nvim-yarp'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
