@@ -7,7 +7,7 @@ let g:lightline = {
             \     ['fugitive', 'gitgutter', 'filename'],
             \   ],
             \   'right': [
-                \     ['lineinfo', 'syntastic'],
+                \     ['lineinfo'],
                 \     ['percent'],
                 \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
                 \   ]
@@ -21,7 +21,6 @@ let g:lightline = {
         \   'filetype': 'MyFiletype',
         \   'fileencoding': 'MyFileencoding',
         \   'mode': 'MyMode',
-        \   'syntastic': 'SyntasticStatuslineFlag',
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
         \ },
