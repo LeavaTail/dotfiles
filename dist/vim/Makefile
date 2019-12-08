@@ -24,6 +24,7 @@ list: ## Show dot files in this repository
 
 init: ## Setup environment settings
 	@echo "[Vim] Initialize dotfiles..."
+	@../../script/deinstall
 
 uninstall: ## Remove deployed dotfile.
 	-@$(foreach val, $(VIMCONF), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)

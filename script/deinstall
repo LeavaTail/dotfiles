@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# usage:
+#   deinstall
+#
+# description:
+#   install dein and vim plugin
+#
+# return:
+#    0: succeed
+#    1: failed install
+
+# MAIN SCRIPT                          
+# -------------------------------------
+# this script needs one more arguments.
+
+yes | timeout -sKILL 60 vim +:q
+
+if [ $? != 0 ]; then 
+# タイムアウトしたときの処理
+  exit 1
+fi
+
+echo "completed install vim plugins"
+exit 0
