@@ -9,7 +9,6 @@ build = 'make'
 # カラースキーム
 [[plugins]]
 repo = 'joshdick/onedark.vim'
-hook_add= 'source ~/.vim/plugins/color.rc.vim'
 
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'
