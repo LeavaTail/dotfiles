@@ -142,7 +142,3 @@ function! LightlineTabFilename(n) abort
   let _ = pathshorten(expand('#'.buflist[winnr - 1].':f'))
   return _ !=# '' ? _ : '[No Name]'
 endfunction
-
-let s:palette = g:lightline#colorscheme#wombat#palette
-let s:palette.tabline.tabsel = [ [ '#d0d0d0', '#5f8787', 252, 66, 'bold' ] ]
-unlet s:palette
