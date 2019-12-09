@@ -19,7 +19,7 @@ list: ## Show dot files in this repository
 init: ## Setup environment settings
 	@$(foreach val, $(DOTFILES), $(MAKE) init -C $(DISTRIBUTION)/$(val);)
 
-install: update check deploy init ## Run make update, deploy, init
+install: check deploy init ## Run make check, deploy, init
 	@echo 'Run setup dotfiles...'
 
 update: ## Fetch changes for this repo

@@ -8,70 +8,25 @@ build = 'make'
 
 # カラースキーム
 [[plugins]]
-repo = 'tomasr/molokai'
-hook_add = '''
-    colorscheme molokai
-    let g:molokai_original = 1
-    let g:rehash256 = 1
-'''
-
-# スニペットの定義プラグイン
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-hook_add = '''
-  let g:indent_guides_enable_on_vim_startup=1
-  source ~/.vim/plugins/indent-guides.rc.vim
-'''
-
-[[plugins]]
-repo = 'ujihisa/neco-look'
-
-# undoツリーのグラフィックス表示
-[[plugins]]
-repo = 'sjl/gundo.vim'
-if = "has('python') || has('python3')"
-hook_add = 'source ~/.vim/plugins/gundo.rc.vim'
+repo = 'joshdick/onedark.vim'
 
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'
 hook_add= 'source ~/.vim/plugins/easymotion.rc.vim'
 
 [[plugins]]
-repo = 'Shougo/vimshell'
-hook_add= 'source ~/.vim/plugins/vimshell.rc.vim'
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add= 'source ~/.vim/plugins/nerdtree.rc.vim'
-
-[[plugins]]
 repo = 'ryanoasis/vim-devicons'
-depends = ['nerdtree']
 hook_add = '''
     let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 '''
 
-# vimでdeopleteを実行するための設定
 [[plugins]]
-repo = 'roxma/nvim-yarp'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
+repo = 'w0rp/ale'
+hook_add= 'source ~/.vim/plugins/ale.rc.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add= 'source ~/.vim/plugins/gitgutter.rc.vim'
-
-[[plugins]]
-repo = 'mbbill/undotree'
-if = "!has('python') && !has('python3')"
-hook_add= 'source ~/.vim/plugins/undotree.rc.vim'
 
 # ステータスバーのレイアウト変更
 [[plugins]]

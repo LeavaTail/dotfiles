@@ -1,5 +1,5 @@
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'onedark',
     \ 'mode_map': {'c': 'NORMAL'},
     \ 'active': {
         \   'left': [
@@ -7,7 +7,7 @@ let g:lightline = {
             \     ['fugitive', 'gitgutter', 'filename'],
             \   ],
             \   'right': [
-                \     ['lineinfo', 'syntastic'],
+                \     ['lineinfo'],
                 \     ['percent'],
                 \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
                 \   ]
@@ -21,7 +21,6 @@ let g:lightline = {
         \   'filetype': 'MyFiletype',
         \   'fileencoding': 'MyFileencoding',
         \   'mode': 'MyMode',
-        \   'syntastic': 'SyntasticStatuslineFlag',
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
         \ },
@@ -143,7 +142,3 @@ function! LightlineTabFilename(n) abort
   let _ = pathshorten(expand('#'.buflist[winnr - 1].':f'))
   return _ !=# '' ? _ : '[No Name]'
 endfunction
-
-let s:palette = g:lightline#colorscheme#wombat#palette
-let s:palette.tabline.tabsel = [ [ '#d0d0d0', '#5f8787', 252, 66, 'bold' ] ]
-unlet s:palette
