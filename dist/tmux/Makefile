@@ -16,6 +16,7 @@ list: ## Show dot files in this repository
 
 init: ## Setup environment settings
 	@echo "[tmux] Initialize dotfiles..."
+	$(HOME)/.tmux/plugins/tpm/bin/install_plugins
 
 uninstall: ## Remove deployed dotfile.
 	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
