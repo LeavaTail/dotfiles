@@ -32,3 +32,8 @@ hook_add= 'source ~/.vim/plugins/gitgutter.rc.vim'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.vim/plugins/lightline.rc.vim'
+
+[[plugins]]
+repo = 'maximbaz/lightline-ale'
+depends = ['lightline.vim', 'ale']
+hook_add = 'source ~/.vim/plugins/lightline-ale.rc.vim'

@@ -7,6 +7,7 @@ let g:lightline = {
             \     ['fugitive', 'gitgutter', 'filename'],
             \   ],
             \   'right': [
+                \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
                 \     ['lineinfo'],
                 \     ['percent'],
                 \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
