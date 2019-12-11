@@ -11,7 +11,7 @@ deploy: ## Create symlink to home directory
 	@echo '[Zsh] ==> Start to deploy dotfiles to home directory.'
 	-@git clone --recursive https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > /dev/null 2>&1
 	@../../script/zinstall
-	@patch $(shell readlink -f ~/.zpreztorc) --follow-symlinks < zprezto.patch
+	@patch `readlink -f ~/.zpreztorc` < zprezto.patch
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), echo " * $(val)";)
