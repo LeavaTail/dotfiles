@@ -62,6 +62,9 @@ $ make install
 
 設定ファイルをデプロイし、各種アプリケーションの初期設定を実施する
 
+`make mini-install`
+
+最小構成の設定ファイルをデプロイする
 
 `make update`
 

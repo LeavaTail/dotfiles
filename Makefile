@@ -22,6 +22,9 @@ init: ## Setup environment settings
 install: check deploy init ## Run make check, deploy, init
 	@./script/errorlog
 
+mini-install: mini ## Run deploy with minimal configuration
+	@$(foreach val, $(DOTFILES), $(MAKE) init -C $(DISTRIBUTION)/$(val);)
+
 update: ## Fetch changes for this repo
 	git pull origin master
 	git submodule init

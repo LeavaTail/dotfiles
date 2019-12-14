@@ -9,7 +9,7 @@ LOGFILE    := emacs$(TIMESTAMP).log
 .DEFAULT_GOAL := help
 
 all:
-
+mini: ## Run deploy with minimal configuration
 deploy: ## Create symlink to home directory
 	-@echo '[emacs]  ==> Start to deploy dotfiles to home directory.'
 	-@mkdir -p $(HOME)/$(CONFDIR)/backup

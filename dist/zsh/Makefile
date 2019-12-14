@@ -8,8 +8,11 @@ LOGFILE    := zsh$(TIMESTAMP).log
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
 
-all:
 
+mini: ## Run deploy with minimal configuration
+	@:
+
+all:
 deploy: ## Create symlink to home directory
 	-@echo '[zsh]    ==> Start to deploy dotfiles to home directory.'
 	-@git clone --recursive --depth=1 -submodules https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../../$(ERRFILE) 2>&1

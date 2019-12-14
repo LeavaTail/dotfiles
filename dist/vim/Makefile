@@ -1,6 +1,7 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 VIMCONF    := $(shell ls *vimrc)
+MINICONF    := $(shell ls mini*rc)
 VIMDIRS    := $(shell ls -F | grep / | sed -e "s/\///g")
 DEINCONF   := $(shell ls *.toml)
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
@@ -10,8 +11,14 @@ LOGFILE    := vim$(TIMESTAMP).log
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
 
-all:
+mini: ## Run deploy with minimal configuration
+	-@echo '[Vim]    ==> Start to deploy dotfiles to home directory.'
+	-@mkdir -p $(HOME)/.vim/dein
+	-@mkdir -p $(HOME)/.vim/temp
+	@$(foreach val, $(MINICONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
+	-@rm ../../$(ERRFILE)
 
+all:
 deploy: ## Create symlink to home directory
 	-@echo '[Vim]    ==> Start to deploy dotfiles to home directory.'
 	-@mkdir -p $(HOME)/.vim/dein

@@ -1,5 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//" | sed -e "s/mini//")
+DOTMINI    := $(shell /bin/ls mini | sed -e "s/Makefile//")
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_tmux$(TIMESTAMP).log
 LOGFILE    := tmux$(TIMESTAMP).log
@@ -7,8 +8,12 @@ LOGFILE    := tmux$(TIMESTAMP).log
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
 
-all:
+mini: ## Run deploy with minimal configuration
+	-@echo '[tmux]   ==> Start to deploy dotfiles to home directory.'
+	@$(foreach val, $(DOTMINI), ln -sfnv $(DOTPATH)/mini/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
+	-@rm ../../$(ERRFILE)
 
+all:
 deploy: ## Create symlink to home directory
 	-@echo '[tmux]   ==> Start to deploy dotfiles to home directory.'
 	-@git clone --depth=1 https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm > ../../$(ERRFILE) 2>&1
