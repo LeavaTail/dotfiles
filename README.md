@@ -86,5 +86,14 @@ $ make install
 ## Usage
 それぞれの設定ファイルについて説明します。
 
+## Overall
+dotfilesプロジェクトの全体像を下記に示す。
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall.png)
+
+この設定ファイルは、zsh環境に[zprezto](https://github.com/sorin-ionescu/prezto)フレームワーク、tmux環境に[tpm](github.com/tmux-plugins/tpm)プラグインマネージャ、Vim環境に[dein](https://github.com/Shougo/dein.vim)プラグインマネージャを別途使用している。
+
+1. `make deploy`を実行すると、各環境に設定ファイルのシンボリックリンクを作成し、zprezto/tpm/deinをGitHubからクローンする。
+2. `make init`を実行すると、deinで該当するVimプラグインをインストール、tpmで該当するtmuxプラグインをインストールする。
+
 ## Authors
 [LeavaTail](https://github.com/LeavaTail)
