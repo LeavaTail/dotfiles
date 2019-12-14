@@ -5,7 +5,7 @@ DISTRIBUTION:= dist
 DOTDIRS     := $(shell ls -F $(DISTRIBUTION) | grep / | sed -e "s/\///g")
 DOTFILES    := $(filter-out $(EXCLUSIONS) $(UNSUPPORTED) , $(DOTDIRS))
 
-.PHONY := all deploy list init install update uninstall clean test help
+.PHONY := all deploy list init install update uninstall clean test help mini-install
 .DEFAULT_GOAL := help
 
 all:

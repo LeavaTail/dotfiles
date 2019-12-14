@@ -4,7 +4,7 @@ TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_tex$(TIMESTAMP).log
 LOGFILE    := tex$(TIMESTAMP).log
 
-.PHONY := all deploy init uninstall clean list test help
+.PHONY := all deploy init uninstall clean list test help mini
 .DEFAULT_GOAL := help
 
 all:

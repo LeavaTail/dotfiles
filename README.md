@@ -12,7 +12,7 @@ Linux用の設定ファイル群
   * tmux
   * emacs
   * vim
-  * tex
+  * latexmk
   * screen
 
 ## Install
