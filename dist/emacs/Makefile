@@ -32,7 +32,8 @@ uninstall: ## Remove deployed dotfile.
 
 clean: ## Remove the emacs setting files
 	-@echo '[emacs]  ==> Remove all dotfiles for this package.'
-	-@$(foreach val, $(CONFDIR), rm -vrf $(HOME)/$(val) > $(LOGFILE);)
+	-@$(foreach val, $(CONFDIR), rm -vrf $(HOME)/$(val) > $(LOGFILE) 2>&1;)
+	-@rm $(LOGFILE)
 
 test: ## Test dotfiles and init script
 	-@$(foreach val, $(DOTFILES), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val);)

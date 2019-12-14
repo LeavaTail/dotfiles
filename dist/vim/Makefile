@@ -50,10 +50,11 @@ uninstall: ## Remove deployed dotfile.
 
 clean: ## Remove the dot files and this repo
 	-@echo '[Vim]    ==> Remove all dotfiles for this package.'
-	-@$(foreach val, $(VIMCONF), rm -vrf $(HOME)/.$(val) > $(LOGFILE);)
-	-@$(foreach val, $(DEINCONF),rm -vrf $(HOME)/.vim/$(val) > $(LOGFILE);)
-	-@$(foreach val, $(VIMDIRS), rm -vrf $(HOME)/.vim/$(val) > $(LOGFILE);)
-	-@rm -vrf $(HOME)/.vim/ > $(LOGFILE)
+	-@$(foreach val, $(VIMCONF), rm -vrf $(HOME)/.$(val) > $(LOGFILE) 2>&1;)
+	-@$(foreach val, $(DEINCONF),rm -vrf $(HOME)/.vim/$(val) > $(LOGFILE) 2>&1;)
+	-@$(foreach val, $(VIMDIRS), rm -vrf $(HOME)/.vim/$(val) > $(LOGFILE) 2>&1;)
+	-@rm -vrf $(HOME)/.vim/ > $(LOGFILE) 2>&1
+	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(VIMCONF), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)

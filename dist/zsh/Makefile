@@ -36,8 +36,9 @@ init: ## Setup environment settings
 
 clean: ## Remove the dot files and this repo
 	-@echo '[zsh]    ==> Remove all dotfiles for this package.'
-	-@rm -vrf $(HOME)/.zsh* $(HOME)/.zlog* $(HOME)/.zpr* > $(LOGFILE)
-	-@rm -vrf $(HOME)/.zprezto > $(LOGFILE)
+	-@rm -vrf $(HOME)/.zsh* $(HOME)/.zlog* $(HOME)/.zpr* > $(LOGFILE) 2>&1
+	-@rm -vrf $(HOME)/.zprezto > $(LOGFILE) 2>&1
+	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../../script/checkfile $(ZDIR)/$(val) $(HOME)/.$(val);)

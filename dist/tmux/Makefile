@@ -37,8 +37,9 @@ uninstall: ## Remove deployed dotfile.
 
 clean: ## Remove the dot files and this repo
 	-@echo '[Tmux]   ==> Remove all dotfiles for this package.'
-	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val) > $(LOGFILE);)
-	-@rm -vrf $(HOME)/.tmux > $(LOGFILE)
+	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val) > $(LOGFILE) 2>&1;)
+	-@rm -vrf $(HOME)/.tmux > $(LOGFILE) 2>&1
+	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(DOTFILES),../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)
