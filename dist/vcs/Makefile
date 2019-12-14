@@ -8,7 +8,9 @@ LOGFILE    := vcs$(TIMESTAMP).log
 .DEFAULT_GOAL := help
 
 all:
-mini: ## Run deploy with minimal configuration
+
+mini: deploy ## Run deploy with minimal configuration
+
 deploy: ## Create symlink to home directory
 	-@echo '[vcs]    ==> Start to deploy dotfiles to home directory.'
 	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
