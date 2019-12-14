@@ -10,12 +10,10 @@ LOGFILE    := error_zsh$(TIMESTAMP).log
 all:
 
 deploy: ## Create symlink to home directory
-	-@echo '[Zsh] ==> Start to deploy dotfiles to home directory'
-	@git clone --recursive https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../../$(LOGFILE) 2>&1
+	-@echo '[zsh]    ==> Start to deploy dotfiles to home directory.'
+	@git clone --recursive --depth=1 -submodules https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../../$(LOGFILE) 2>&1
 	-@ echo -n "..."
 	@../../script/zinstall > ../../$(LOGFILE) 2>&1
-	-@ echo -n "..."
-	@patch `readlink -f ~/.zpreztorc` < zprezto.patch > ../../$(LOGFILE) 2>&1
 	-@ echo "..."
 	-@rm ../../$(LOGFILE)
 
@@ -26,10 +24,13 @@ uninstall: ## Remove deployed dotfile.
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../../script/removelink $(ZDIR)/$(val) $(HOME)/.$(val);)
 
 init: ## Setup environment settings
-	@echo "[Zsh] Initialize dotfiles..."
+	-@echo "[zsh]    ==> Initialize dotfiles."
+	@patch `readlink -f ~/.zpreztorc` < zprezto.patch > ../../$(LOGFILE) 2>&1
+	-@ echo "..."
+	-@rm ../../$(LOGFILE)
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
+	@echo 'Remove dot files in your home directory.'
 	-rm -vrf $(HOME)/.zsh* $(HOME)/.zlog* $(HOME)/.zpr*
 	-rm -vrf $(HOME)/.zprezto
 

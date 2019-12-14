@@ -10,7 +10,7 @@ LOGFILE    := error_emacs$(TIMESTAMP).log
 all:
 
 deploy: ## Create symlink to home directory
-	-@echo '[emacs] ==> Start to deploy dotfiles to home directory.'
+	-@echo '[emacs]  ==> Start to deploy dotfiles to home directory.'
 	-@mkdir -p $(HOME)/$(CONFDIR)/backup
 	-@mkdir -p $(HOME)/$(CONFDIR)/swap
 	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val) > ../../$(LOGFILE) 2>&1;)
@@ -21,13 +21,13 @@ list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
 
 init: ## Setup environment settings
-	@echo "[emacs] Initialize dotfiles..."
+	@:
 
 uninstall: ## Remove deployed dotfile.
 	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val);)
 
 clean: ## Remove the emacs setting files
-	@echo 'Remove dot files in your home directory...'
+	@echo 'Remove dot files in your home directory.'
 	-$(foreach val, $(CONFDIR), rm -vrf $(HOME)/$(val);)
 
 test: ## Test dotfiles and init script

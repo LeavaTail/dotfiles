@@ -19,13 +19,13 @@ list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
 
 init: ## Setup environment settings
-	@echo "[screen] Initialize dotfiles..."
+	@:
 
 uninstall: ## Remove deployed dotfile.
 	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
+	-@echo 'Remove dot files in your home directory.'
 	-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
 
 test: ## make sure that dotfiles is correst deploy

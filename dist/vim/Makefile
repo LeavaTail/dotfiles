@@ -12,7 +12,7 @@ LOGFILE    := error_vim$(TIMESTAMP).log
 all:
 
 deploy: ## Create symlink to home directory
-	-@echo '[Vim] ==> Start to deploy dotfiles to home directory'
+	-@echo '[Vim]    ==> Start to deploy dotfiles to home directory.'
 	-@mkdir -p $(HOME)/.vim/dein
 	-@mkdir -p $(HOME)/.vim/temp
 	@$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(LOGFILE) 2>&1;)
@@ -29,8 +29,10 @@ list: ## Show dot files in this repository
 	-@$(foreach val, $(VIMDIRS), echo " * $(val)";)
 
 init: ## Setup environment settings
-	@echo "[Vim] Initialize dotfiles..."
-	@../../script/deinstall
+	-@echo "[Vim]    ==> Initialize dotfiles."
+	@../../script/deinstall > ../../$(LOGFILE) 2>&1
+	-@echo '...'
+	-@rm ../../$(LOGFILE)
 
 uninstall: ## Remove deployed dotfile.
 	-@$(foreach val, $(VIMCONF), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)

@@ -9,8 +9,8 @@ LOGFILE    := error_tmux$(TIMESTAMP).log
 all:
 
 deploy: ## Create symlink to home directory
-	-@echo '[tmux] ==> Start to deploy dotfiles to home directory.'
-	@git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm > ../../$(LOGFILE) 2>&1
+	-@echo '[tmux]   ==> Start to deploy dotfiles to home directory.'
+	@git clone --depth=1 https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm > ../../$(LOGFILE) 2>&1
 	-@echo -n '...'
 	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(LOGFILE) 2>&1;)
 	-@echo "..."
@@ -20,14 +20,16 @@ list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
 
 init: ## Setup environment settings
-	@echo "[tmux] Initialize dotfiles..."
-	$(HOME)/.tmux/plugins/tpm/bin/install_plugins
+	-@echo "[tmux]   ==> Initialize dotfiles."
+	@$(HOME)/.tmux/plugins/tpm/bin/install_plugins > ../../$(LOGFILE) 2>&1
+	-@echo '...'
+	-@rm ../../$(LOGFILE)
 
 uninstall: ## Remove deployed dotfile.
 	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
+	-@echo 'Remove dot files in your home directory.'
 	-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
 	-rm -vrf $(HOME)/.tmux
 
