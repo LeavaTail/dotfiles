@@ -4,7 +4,8 @@ VIMCONF    := $(shell ls *vimrc)
 VIMDIRS    := $(shell ls -F | grep / | sed -e "s/\///g")
 DEINCONF   := $(shell ls *.toml)
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
-LOGFILE    := error_vim$(TIMESTAMP).log
+ERRFILE    := error_vim$(TIMESTAMP).log
+LOGFILE    := vim$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
@@ -15,13 +16,13 @@ deploy: ## Create symlink to home directory
 	-@echo '[Vim]    ==> Start to deploy dotfiles to home directory.'
 	-@mkdir -p $(HOME)/.vim/dein
 	-@mkdir -p $(HOME)/.vim/temp
-	@$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(LOGFILE) 2>&1;)
+	@$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo -n '...'
-	@$(foreach val, $(DEINCONF),ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(LOGFILE) 2>&1;)
+	@$(foreach val, $(DEINCONF),ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo -n '...'
-	@$(foreach val, $(VIMDIRS), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(LOGFILE) 2>&1;)
+	@$(foreach val, $(VIMDIRS), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo '...'
-	-@rm ../../$(LOGFILE)
+	-@rm ../../$(ERRFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(VIMCONF), echo " * $(val)";)
@@ -30,9 +31,9 @@ list: ## Show dot files in this repository
 
 init: ## Setup environment settings
 	-@echo "[Vim]    ==> Initialize dotfiles."
-	@../../script/deinstall > ../../$(LOGFILE) 2>&1
+	@../../script/deinstall > ../../$(ERRFILE) 2>&1
 	-@echo '...'
-	-@rm ../../$(LOGFILE)
+	-@rm ../../$(ERRFILE)
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[Vim]    ==> Remove only deployed files.'
@@ -42,14 +43,10 @@ uninstall: ## Remove deployed dotfile.
 
 clean: ## Remove the dot files and this repo
 	-@echo '[Vim]    ==> Remove all dotfiles for this package.'
-	-@$(foreach val, $(VIMCONF), rm -vrf $(HOME)/.$(val);)
-	-@echo -n '...'
-	-@$(foreach val, $(DEINCONF),rm -vrf $(HOME)/.vim/$(val);)
-	-@echo -n '...'
-	-@$(foreach val, $(VIMDIRS), rm -vrf $(HOME)/.vim/$(val);)
-	-@echo -n '...'
-	-@rm -vrf $(HOME)/.vim/
-	-@echo '...'
+	-@$(foreach val, $(VIMCONF), rm -vrf $(HOME)/.$(val) > $(LOGFILE);)
+	-@$(foreach val, $(DEINCONF),rm -vrf $(HOME)/.vim/$(val) > $(LOGFILE);)
+	-@$(foreach val, $(VIMDIRS), rm -vrf $(HOME)/.vim/$(val) > $(LOGFILE);)
+	-@rm -vrf $(HOME)/.vim/ > $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(VIMCONF), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)

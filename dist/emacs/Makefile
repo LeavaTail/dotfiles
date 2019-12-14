@@ -2,7 +2,8 @@ DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 CONFDIR    := .emacs.d
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
-LOGFILE    := error_emacs$(TIMESTAMP).log
+ERRFILE    := error_emacs$(TIMESTAMP).log
+LOGFILE    := emacs$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
@@ -13,9 +14,9 @@ deploy: ## Create symlink to home directory
 	-@echo '[emacs]  ==> Start to deploy dotfiles to home directory.'
 	-@mkdir -p $(HOME)/$(CONFDIR)/backup
 	-@mkdir -p $(HOME)/$(CONFDIR)/swap
-	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val) > ../../$(LOGFILE) 2>&1;)
+	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo '...'
-	-@rm ../../$(LOGFILE)
+	-@rm ../../$(ERRFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
@@ -29,8 +30,7 @@ uninstall: ## Remove deployed dotfile.
 
 clean: ## Remove the emacs setting files
 	-@echo '[emacs]  ==> Remove all dotfiles for this package.'
-	-@$(foreach val, $(CONFDIR), rm -vrf $(HOME)/$(val);)
-	-@echo '...'
+	-@$(foreach val, $(CONFDIR), rm -vrf $(HOME)/$(val) > $(LOGFILE);)
 
 test: ## Test dotfiles and init script
 	-@$(foreach val, $(DOTFILES), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val);)

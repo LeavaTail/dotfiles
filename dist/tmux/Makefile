@@ -1,7 +1,8 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
-LOGFILE    := error_tmux$(TIMESTAMP).log
+ERRFILE    := error_tmux$(TIMESTAMP).log
+LOGFILE    := tmux$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
@@ -10,20 +11,20 @@ all:
 
 deploy: ## Create symlink to home directory
 	-@echo '[tmux]   ==> Start to deploy dotfiles to home directory.'
-	@git clone --depth=1 https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm > ../../$(LOGFILE) 2>&1
+	-@git clone --depth=1 https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm > ../../$(ERRFILE) 2>&1
 	-@echo -n '...'
-	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(LOGFILE) 2>&1;)
+	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo "..."
-	-@rm ../../$(LOGFILE)
+	-@rm ../../$(ERRFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
 
 init: ## Setup environment settings
 	-@echo "[tmux]   ==> Initialize dotfiles."
-	@$(HOME)/.tmux/plugins/tpm/bin/install_plugins > ../../$(LOGFILE) 2>&1
+	@$(HOME)/.tmux/plugins/tpm/bin/install_plugins > ../../$(ERRFILE) 2>&1
 	-@echo '...'
-	-@rm ../../$(LOGFILE)
+	-@rm ../../$(ERRFILE)
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[Tmux]   ==> Remove only deployed files.'
@@ -31,10 +32,8 @@ uninstall: ## Remove deployed dotfile.
 
 clean: ## Remove the dot files and this repo
 	-@echo '[Tmux]   ==> Remove all dotfiles for this package.'
-	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
-	-@echo -n '...'
-	-@rm -vrf $(HOME)/.tmux
-	-@echo '...'
+	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val) > $(LOGFILE);)
+	-@rm -vrf $(HOME)/.tmux > $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(DOTFILES),../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)
