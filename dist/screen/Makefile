@@ -22,11 +22,13 @@ init: ## Setup environment settings
 	@:
 
 uninstall: ## Remove deployed dotfile.
+	-@echo '[screen] ==> Remove only deployed files.'
 	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dot files and this repo
-	-@echo 'Remove dot files in your home directory.'
-	-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
+	-@echo '[screen] ==> Remove all dotfiles for this package.'
+	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
+	-@echo '...'
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(DOTFILES),../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)

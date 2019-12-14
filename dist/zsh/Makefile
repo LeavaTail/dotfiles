@@ -21,6 +21,7 @@ list: ## Show dot files in this repository
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), echo " * $(val)";)
 
 uninstall: ## Remove deployed dotfile.
+	-@echo '[zsh]    ==> Remove only deployed files.'
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../../script/removelink $(ZDIR)/$(val) $(HOME)/.$(val);)
 
 init: ## Setup environment settings
@@ -30,9 +31,11 @@ init: ## Setup environment settings
 	-@rm ../../$(LOGFILE)
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory.'
-	-rm -vrf $(HOME)/.zsh* $(HOME)/.zlog* $(HOME)/.zpr*
-	-rm -vrf $(HOME)/.zprezto
+	-@echo '[zsh]    ==> Remove all dotfiles for this package.'
+	-@rm -vrf $(HOME)/.zsh* $(HOME)/.zlog* $(HOME)/.zpr*
+	-@echo -n '...'
+	-@rm -vrf $(HOME)/.zprezto
+	-@echo '...'
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../../script/checkfile $(ZDIR)/$(val) $(HOME)/.$(val);)

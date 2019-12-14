@@ -35,16 +35,21 @@ init: ## Setup environment settings
 	-@rm ../../$(LOGFILE)
 
 uninstall: ## Remove deployed dotfile.
+	-@echo '[Vim]    ==> Remove only deployed files.'
 	-@$(foreach val, $(VIMCONF), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
 	-@$(foreach val, $(DEINCONF), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
 	-@$(foreach val, $(VIMDIRS), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
-	-$(foreach val, $(VIMCONF), rm -vrf $(HOME)/.$(val);)
-	-$(foreach val, $(DEINCONF),rm -vrf $(HOME)/.vim/$(val);)
-	-$(foreach val, $(VIMDIRS), rm -vrf $(HOME)/.vim/$(val);)
-	-rm -vrf $(HOME)/.vim/
+	-@echo '[Vim]    ==> Remove all dotfiles for this package.'
+	-@$(foreach val, $(VIMCONF), rm -vrf $(HOME)/.$(val);)
+	-@echo -n '...'
+	-@$(foreach val, $(DEINCONF),rm -vrf $(HOME)/.vim/$(val);)
+	-@echo -n '...'
+	-@$(foreach val, $(VIMDIRS), rm -vrf $(HOME)/.vim/$(val);)
+	-@echo -n '...'
+	-@rm -vrf $(HOME)/.vim/
+	-@echo '...'
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(VIMCONF), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)

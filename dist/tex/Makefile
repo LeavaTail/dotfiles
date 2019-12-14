@@ -21,11 +21,13 @@ init: ## Setup environment settings
 	@:
 
 uninstall: ## Remove deployed dotfile.
+	-@echo '[TeX]    ==> Remove only deployed files.'
 	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory.'
-	-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
+	-@echo '[TeX]    ==> Remove all dotfiles for this package.'
+	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
+	-@echo '...'
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(DOTFILES), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)

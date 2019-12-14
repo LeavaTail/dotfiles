@@ -24,11 +24,13 @@ init: ## Setup environment settings
 	@:
 
 uninstall: ## Remove deployed dotfile.
+	-@echo '[emacs]  ==> Remove only deployed files.'
 	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val);)
 
 clean: ## Remove the emacs setting files
-	@echo 'Remove dot files in your home directory.'
-	-$(foreach val, $(CONFDIR), rm -vrf $(HOME)/$(val);)
+	-@echo '[emacs]  ==> Remove all dotfiles for this package.'
+	-@$(foreach val, $(CONFDIR), rm -vrf $(HOME)/$(val);)
+	-@echo '...'
 
 test: ## Test dotfiles and init script
 	-@$(foreach val, $(DOTFILES), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val);)
