@@ -1,31 +1,44 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 ZDIR       := "${HOME}/.zprezto/runcoms"
+TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
+ERRFILE    := error_zsh$(TIMESTAMP).log
+LOGFILE    := zsh$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
 
-all:
 
+mini: ## Run deploy with minimal configuration
+	@:
+
+all:
 deploy: ## Create symlink to home directory
-	@echo '[Zsh] ==> Start to deploy dotfiles to home directory.'
-	-@git clone --recursive https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > /dev/null 2>&1
-	@../../script/zinstall
-	@patch $(shell readlink -f ~/.zpreztorc) --follow-symlinks < zprezto.patch
+	-@echo '[zsh]    ==> Start to deploy dotfiles to home directory.'
+	-@git clone --recursive --depth=1 -submodules https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../../$(ERRFILE) 2>&1
+	-@ echo -n "..."
+	@../../script/zinstall > ../../$(ERRFILE) 2>&1
+	-@ echo "..."
+	-@rm ../../$(ERRFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), echo " * $(val)";)
 
 uninstall: ## Remove deployed dotfile.
+	-@echo '[zsh]    ==> Remove only deployed files.'
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../../script/removelink $(ZDIR)/$(val) $(HOME)/.$(val);)
 
 init: ## Setup environment settings
-	@echo "[Zsh] Initialize dotfiles..."
+	-@echo "[zsh]    ==> Initialize dotfiles."
+	@patch `readlink -f ~/.zpreztorc` < zprezto.patch > ../../$(ERRFILE) 2>&1
+	-@ echo "..."
+	-@rm ../../$(ERRFILE)
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
-	-rm -vrf $(HOME)/.zsh* $(HOME)/.zlog* $(HOME)/.zpr*
-	-rm -vrf $(HOME)/.zprezto
+	-@echo '[zsh]    ==> Remove all dotfiles for this package.'
+	-@rm -vrf $(HOME)/.zsh* $(HOME)/.zlog* $(HOME)/.zpr* > $(LOGFILE) 2>&1
+	-@rm -vrf $(HOME)/.zprezto > $(LOGFILE) 2>&1
+	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../../script/checkfile $(ZDIR)/$(val) $(HOME)/.$(val);)

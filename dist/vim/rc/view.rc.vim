@@ -16,8 +16,3 @@ set laststatus=2
 set cmdheight=2
 " コマンドを画面最下部に表示する
 set showcmd
-
-" 別途文字列の色を変更
-autocmd ColorScheme * highlight Comment ctermfg=DarkGrey
-" カラースキーム
-colorscheme onedark

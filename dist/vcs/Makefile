@@ -1,27 +1,36 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
+ERRFILE    := error_vcs$(TIMESTAMP).log
+LOGFILE    := vcs$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
 
 all:
 
+mini: deploy ## Run deploy with minimal configuration
+
 deploy: ## Create symlink to home directory
-	@echo '[vcs] ==> Start to deploy dotfiles to home directory.'
-	-$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@echo '[vcs]    ==> Start to deploy dotfiles to home directory.'
+	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
+	-@echo '...'
+	-@rm ../../$(ERRFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
 
 init: ## Setup environment settings
-	@echo "[vcs] Initialize dotfiles..."
+	@:
 
 uninstall: ## Remove deployed dotfile.
+	-@echo '[vcs]    ==> Remove only deployed files.'
 	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dot files and this repo
-	@echo 'Remove dot files in your home directory...'
-	-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
+	-@echo '[vcs]    ==> Remove all dotfiles for this package.'
+	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val) > $(LOGFILE) 2>&1;)
+	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
 	-@$(foreach val, $(DOTFILES), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)
