@@ -1,5 +1,7 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
+LOGFILE    := error_tex$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
@@ -7,8 +9,10 @@ DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 all:
 
 deploy: ## Create symlink to home directory
-	@echo '[TeX] ==> Start to deploy dotfiles to home directory.'
-	-$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@echo '[TeX] ==> Start to deploy dotfiles to home directory.'
+	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(LOGFILE) 2>&1;)
+	-@echo '...'
+	-@ rm ../../$(LOGFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)

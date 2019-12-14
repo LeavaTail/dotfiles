@@ -1,6 +1,8 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 CONFDIR    := .emacs.d
+TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
+LOGFILE    := error_emacs$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
@@ -8,10 +10,12 @@ CONFDIR    := .emacs.d
 all:
 
 deploy: ## Create symlink to home directory
-	@echo '[emacs] ==> Start to deploy dotfiles to home directory.'
+	-@echo '[emacs] ==> Start to deploy dotfiles to home directory.'
 	-@mkdir -p $(HOME)/$(CONFDIR)/backup
 	-@mkdir -p $(HOME)/$(CONFDIR)/swap
-	-$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val);)
+	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val) > ../../$(LOGFILE) 2>&1;)
+	-@echo '...'
+	-@rm ../../$(LOGFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)

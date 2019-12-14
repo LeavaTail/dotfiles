@@ -1,6 +1,8 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 ZDIR       := "${HOME}/.zprezto/runcoms"
+TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
+LOGFILE    := error_zsh$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
@@ -8,10 +10,14 @@ ZDIR       := "${HOME}/.zprezto/runcoms"
 all:
 
 deploy: ## Create symlink to home directory
-	@echo '[Zsh] ==> Start to deploy dotfiles to home directory.'
-	-@git clone --recursive https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > /dev/null 2>&1
-	@../../script/zinstall
-	@patch `readlink -f ~/.zpreztorc` < zprezto.patch
+	-@echo '[Zsh] ==> Start to deploy dotfiles to home directory'
+	@git clone --recursive https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../../$(LOGFILE) 2>&1
+	-@ echo -n "..."
+	@../../script/zinstall > ../../$(LOGFILE) 2>&1
+	-@ echo -n "..."
+	@patch `readlink -f ~/.zpreztorc` < zprezto.patch > ../../$(LOGFILE) 2>&1
+	-@ echo "..."
+	-@rm ../../$(LOGFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), echo " * $(val)";)

@@ -3,6 +3,8 @@ DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 VIMCONF    := $(shell ls *vimrc)
 VIMDIRS    := $(shell ls -F | grep / | sed -e "s/\///g")
 DEINCONF   := $(shell ls *.toml)
+TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
+LOGFILE    := error_vim$(TIMESTAMP).log
 
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
@@ -10,12 +12,16 @@ DEINCONF   := $(shell ls *.toml)
 all:
 
 deploy: ## Create symlink to home directory
-	@echo '[Vim] ==> Start to deploy dotfiles to home directory.'
+	-@echo '[Vim] ==> Start to deploy dotfiles to home directory'
 	-@mkdir -p $(HOME)/.vim/dein
 	-@mkdir -p $(HOME)/.vim/temp
-	-$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val);)
-	-$(foreach val, $(DEINCONF),ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
-	-$(foreach val, $(VIMDIRS), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
+	@$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(LOGFILE) 2>&1;)
+	-@echo -n '...'
+	@$(foreach val, $(DEINCONF),ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(LOGFILE) 2>&1;)
+	-@echo -n '...'
+	@$(foreach val, $(VIMDIRS), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(LOGFILE) 2>&1;)
+	-@echo '...'
+	-@rm ../../$(LOGFILE)
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(VIMCONF), echo " * $(val)";)
