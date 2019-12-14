@@ -95,7 +95,27 @@ dotfilesプロジェクトの全体像を下記に示す。
 1. `make deploy`を実行すると、各環境に設定ファイルのシンボリックリンクを作成し、zprezto/tpm/deinをGitHubからクローンする。
 2. `make init`を実行すると、deinで該当するVimプラグインをインストール、tpmで該当するtmuxプラグインをインストールする。
 
+新規にインストールするプラグインは以下の通り。
 
+**vim**
+  * [dein](https://github.com/Shougo/dein.vim)
+  * [vimproc](https://github.com/Shougo/vimproc.vim)
+  * [onedark](https://github.com/joshdick/onedark.vim)
+  * [vim-easymotion](github.com/easymotion/vim-easymotion)
+  * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
+  * [ale](https://github.com/dense-analysis/ale)
+  * [vim-gitgutter](github.com/airblade/vim-gitgutter)
+  * [lightline](https://github.com/itchyny/lightline.vim)
+  * [lightline-ale](https://github.com/maximbaz/lightline-ale)
+
+**tmux**
+  * [tpm](https://github.com/tmux-plugins/tpm)
+  * [tmux-sensible](https://github.com/tmux-plugins/tmux-sensible)
+  * [tmux-battery](https://github.com/tmux-plugins/tmux-battery)
+  * [tmux-yank](github.com/tmux-plugins/tmux-yank)
+  * [tmux-open](https://github.com/tmux-plugins/tmux-open)
+  * [tmux-resurrect](github.com/tmux-plugins/tmux-resurrect)
+  * [tmux-pain-control](github.com/tmux-plugins/tmux-pain-control)
 
 ## Authors
 [LeavaTail](https://github.com/LeavaTail)
