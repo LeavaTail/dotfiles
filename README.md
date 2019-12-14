@@ -17,7 +17,12 @@ Linux用の設定ファイル群
 
 ## Install
 ### Requirements
-Check below files.
+ * git
+ * make
+ * vim
+ * zsh
+
+最新の情報は下記を参照。
  * [common Required packages](docs/Requirements_common)
  * [about zsh Required packages](docs/Requirements_zsh)
  * [about vim Required packages](docs/Requirements_vim)
