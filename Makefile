@@ -20,7 +20,7 @@ init: ## Setup environment settings
 	@$(foreach val, $(DOTFILES), $(MAKE) init -C $(DISTRIBUTION)/$(val);)
 
 install: check deploy init ## Run make check, deploy, init
-	@echo 'Run setup dotfiles...'
+	@./script/errorlog
 
 update: ## Fetch changes for this repo
 	git pull origin master
