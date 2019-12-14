@@ -5,7 +5,7 @@
 Linux用の設定ファイル群
 
 ## Description
-![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20191202.png)
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20191214.png)
 
 このリポジトリには、以下の設定ファイルが保存されています。
   * zsh
