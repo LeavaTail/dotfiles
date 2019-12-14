@@ -70,7 +70,7 @@ $ make install
 
 `make clean`
 
-該当するドットファイルをすべて削除する
+該当するドットファイルに関連するすべてのファイルを削除する
 
 
 `make test`
@@ -94,6 +94,8 @@ dotfilesプロジェクトの全体像を下記に示す。
 
 1. `make deploy`を実行すると、各環境に設定ファイルのシンボリックリンクを作成し、zprezto/tpm/deinをGitHubからクローンする。
 2. `make init`を実行すると、deinで該当するVimプラグインをインストール、tpmで該当するtmuxプラグインをインストールする。
+
+
 
 ## Authors
 [LeavaTail](https://github.com/LeavaTail)
