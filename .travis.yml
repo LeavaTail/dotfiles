@@ -13,6 +13,6 @@ before_install:
 script:
     - "make install"
     - "make test"
-    - "script/check_tmux_plugin"
-    - "script/check_vim_plugin"
+    - "tests/check_tmux_plugin"
+    - "tests/check_vim_plugin"
 	- "cat ./error_*.log >&2"
