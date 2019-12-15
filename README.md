@@ -1,6 +1,7 @@
 # dotfiles
 
 ![Version](https://img.shields.io/github/tag/LeavaTail/dotfiles.svg)
+[![Build Status](https://travis-ci.org/LeavaTail/dotfiles.svg?branch=master)](https://travis-ci.org/LeavaTail/dotfiles)
 
 Linux用の設定ファイル群
 
@@ -19,7 +20,7 @@ Linux用の設定ファイル群
 ### Requirements
  * git
  * make
- * vim
+ * vim 8.0
  * zsh
 
 最新の情報は下記を参照。

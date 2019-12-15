@@ -1,0 +1,19 @@
+language: bash
+
+os: linux
+dist: bionic
+sudo: required
+
+before_install:
+    - sudo apt-get update
+    - sudo apt-get install git
+    - sudo apt-get install make
+    - sudo apt-get install vim
+    - sudo apt-get install zsh
+
+script:
+    - "make clean"
+    - "make install"
+    - "make test"
+    - "tests/check_tmux_plugin"
+    - "tests/check_vim_plugin"
