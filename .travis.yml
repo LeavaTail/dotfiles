@@ -15,3 +15,4 @@ script:
     - "make test"
     - "script/check_tmux_plugin"
     - "script/check_vim_plugin"
+	- "cat ./error_*.log >&2"
