@@ -15,7 +15,6 @@ script:
     - "make clean"
     - "make install"
     - "make test"
-    - "ls ./error_*.log"
-    - "cat ./error_*.log"
     - "tests/check_tmux_plugin"
     - "tests/check_vim_plugin"
+    - "cat ./error_*.log >&2"
