@@ -19,7 +19,7 @@ Linux用の設定ファイル群
 ### Requirements
  * git
  * make
- * vim
+ * vim 8.0
  * zsh
 
 最新の情報は下記を参照。
