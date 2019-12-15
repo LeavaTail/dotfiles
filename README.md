@@ -1,6 +1,7 @@
 # dotfiles
 
 ![Version](https://img.shields.io/github/tag/LeavaTail/dotfiles.svg)
+[![Build Status](https://travis-ci.org/LeavaTail/dotfiles.svg?branch=master)](https://travis-ci.org/LeavaTail/dotfiles)
 
 Linux用の設定ファイル群
 
