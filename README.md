@@ -28,6 +28,7 @@ Linux用の設定ファイル群
  * [common Required packages](docs/Requirements_common)
  * [about zsh Required packages](docs/Requirements_zsh)
  * [about vim Required packages](docs/Requirements_vim)
+ * [about tmux Required packages](docs/Requirements_tmux)
 
 ### Install
 下記のコマンドを実行するだけでデプロイが完了します。
