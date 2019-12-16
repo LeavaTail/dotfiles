@@ -22,6 +22,7 @@ Linux用の設定ファイル群
  * make
  * vim 8.0
  * zsh
+ * tmux
 
 最新の情報は下記を参照。
  * [common Required packages](docs/Requirements_common)
