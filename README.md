@@ -15,6 +15,7 @@ Linux用の設定ファイル群
   * vim
   * latexmk
   * screen
+  * byobu
 
 ## Install
 ### Requirements
@@ -22,11 +23,13 @@ Linux用の設定ファイル群
  * make
  * vim 8.0
  * zsh
+ * Byobu
 
 最新の情報は下記を参照。
  * [common Required packages](docs/Requirements_common)
  * [about zsh Required packages](docs/Requirements_zsh)
  * [about vim Required packages](docs/Requirements_vim)
+ * [about byobu Required packages](docs/Requirements_byobu)
 
 ### Install
 下記のコマンドを実行するだけでデプロイが完了します。
