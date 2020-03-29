@@ -27,7 +27,7 @@ list: ## Show dot files in this repository
 
 init: ## Setup environment settings
 	-@echo "[tmux]   ==> Initialize dotfiles."
-	@$(HOME)/.tmux/plugins/tpm/bin/install_plugins > ../../$(ERRFILE) 2>&1
+	@tmux source $(HOME)/.tmux.conf > ../../$(ERRFILE) 2>&1
 	-@echo '...'
 	-@rm ../../$(ERRFILE)
 
