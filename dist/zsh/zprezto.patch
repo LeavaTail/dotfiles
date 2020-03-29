@@ -1,6 +1,8 @@
---- zpreztorc	2018-09-24 17:23:53.831652900 +0900
-+++ .zpreztorc	2018-09-24 17:35:39.313838600 +0900
-@@ -35,7 +35,8 @@
+diff --git a/runcoms/zpreztorc b/runcoms/zpreztorc
+index 9a3c19a..db06c94 100644
+--- a/runcoms/zpreztorc
++++ b/runcoms/zpreztorc
+@@ -38,7 +38,8 @@ zstyle ':prezto:load' pmodule \
    'spectrum' \
    'utility' \
    'completion' \
@@ -10,7 +12,7 @@
  
  #
  # Autosuggestions
-@@ -60,7 +61,7 @@
+@@ -63,7 +64,7 @@ zstyle ':prezto:load' pmodule \
  zstyle ':prezto:module:editor' key-bindings 'emacs'
  
  # Auto convert .... to ../..
@@ -19,7 +21,7 @@
  
  # Allow the zsh prompt context to be shown.
  #zstyle ':prezto:module:editor' ps-context 'yes'
-@@ -113,12 +114,12 @@
+@@ -116,12 +117,12 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
  # Set the prompt theme to load.
  # Setting it to 'random' loads a random theme.
  # Auto set to 'off' on dumb terminals.

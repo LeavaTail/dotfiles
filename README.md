@@ -15,18 +15,23 @@ Linux用の設定ファイル群
   * vim
   * latexmk
   * screen
+  * byobu
 
 ## Install
 ### Requirements
  * git
  * make
- * vim 8.0
- * zsh
+ * vim (>=8.0)
+ * zsh (>=4.3.11)
+ * tmux (>=1.9)
+ * Byobu
 
 最新の情報は下記を参照。
  * [common Required packages](docs/Requirements_common)
  * [about zsh Required packages](docs/Requirements_zsh)
  * [about vim Required packages](docs/Requirements_vim)
+ * [about tmux Required packages](docs/Requirements_tmux)
+ * [about byobu Required packages](docs/Requirements_byobu)
 
 ### Install
 下記のコマンドを実行するだけでデプロイが完了します。
