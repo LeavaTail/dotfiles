@@ -30,7 +30,7 @@ uninstall: ## Remove deployed dotfile.
 
 init: ## Setup environment settings
 	-@echo "[zsh]    ==> Initialize dotfiles."
-	@patch `readlink -f ~/.zpreztorc` < zprezto.patch > ../../$(ERRFILE) 2>&1
+	@patch "$(HOME)/.zprezto/runcoms/zpreztorc" < zprezto.patch > ../../$(ERRFILE) 2>&1
 	-@ echo "..."
 	-@rm ../../$(ERRFILE)
 
