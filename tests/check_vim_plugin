@@ -46,7 +46,7 @@ function check_plugin() {
 ret=0
 
 # install success?
-yes | timeout -sKILL 60 vim +:q > /dev/null 2>&1
+yes | timeout -sKILL 300 vim +:q > /dev/null 2>&1
 if [ $? != 0 ]; then
 	echo "Failed install dein, Please install again."
 	exit 1
