@@ -28,6 +28,13 @@ hook_add= 'source ~/.vim/plugins/ale.rc.vim'
 repo = 'airblade/vim-gitgutter'
 hook_add= 'source ~/.vim/plugins/gitgutter.rc.vim'
 
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+
 # vimでdeopleteを実行するための設定
 [[plugins]]
 repo = 'roxma/nvim-yarp'
