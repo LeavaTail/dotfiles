@@ -35,6 +35,16 @@ build = './install --all'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 
+[[plugins]]
+repo = 'lighttiger2505/gtags.vim'
+hook_add= 'source ~/.vim/plugins/gtags.rc.vim'
+
+[[plugins]]
+repo = 'jsfaint/gen_tags.vim'
+hook_add = '''
+    let g:gen_tags#gtags_auto_gen = 1
+'''
+
 # vimでdeopleteを実行するための設定
 [[plugins]]
 repo = 'roxma/nvim-yarp'
