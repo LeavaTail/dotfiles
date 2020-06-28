@@ -9,6 +9,7 @@ before_install:
     - sudo apt-get install git
     - sudo apt-get install make
     - sudo apt-get install vim
+    - sudo apt-get install neovim
     - sudo apt-get install zsh
 
 script:
