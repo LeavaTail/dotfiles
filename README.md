@@ -122,6 +122,8 @@ dotfilesプロジェクトの全体像を下記に示す。
   * [lightline](https://github.com/itchyny/lightline.vim)
   * [lightline-ale](https://github.com/maximbaz/lightline-ale)
   * [vim-signature](https://github.com/kshenoy/vim-signature)
+  * [previm](https://github.com/previm/previm)
+  * [open-browser](https://github.com/tyru/open-browser.vim)
 
 **tmux**
   * [tpm](https://github.com/tmux-plugins/tpm)
