@@ -21,14 +21,18 @@ mini: ## Run deploy with minimal configuration
 all:
 deploy: ## Create symlink to home directory
 	-@echo '[Vim]    ==> Start to deploy dotfiles to home directory.'
+	-@export XDG_CONFIG_HOME=${HOME}/.config
 	-@mkdir -p $(HOME)/.vim/dein
 	-@mkdir -p $(HOME)/.vim/temp
+	-@mkdir -p $(HOME)/.config
 	@$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo -n '...'
 	@$(foreach val, $(DEINCONF),ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo -n '...'
 	@$(foreach val, $(VIMDIRS), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo '...'
+	@ln -s ${HOME}/.vim ${HOME}/.config/nvim
+	@ln -s ${HOME}/.vimrc ${HOME}/.config/nvim/init.vim
 	-@rm ../../$(ERRFILE)
 
 list: ## Show dot files in this repository
