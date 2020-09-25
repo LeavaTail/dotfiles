@@ -56,6 +56,10 @@ repo = 'roxma/vim-hug-neovim-rpc'
 [[plugins]]
 repo = 'kshenoy/vim-signature'
 
+# local vimrc file
+[[plugins]]
+repo = 'thinca/vim-localrc'
+
 # ステータスバーのレイアウト変更
 [[plugins]]
 repo = 'itchyny/lightline.vim'

@@ -124,6 +124,7 @@ dotfilesプロジェクトの全体像を下記に示す。
   * [vim-signature](https://github.com/kshenoy/vim-signature)
   * [previm](https://github.com/previm/previm)
   * [open-browser](https://github.com/tyru/open-browser.vim)
+  * [vim-localrc](https://github.com/thinca/vim-localrc)
 
 **tmux**
   * [tpm](https://github.com/tmux-plugins/tpm)
