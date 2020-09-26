@@ -1,7 +1,7 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 VIMCONF    := $(shell ls *vimrc)
-MINICONF    := $(shell ls minirc)
+NVIMCONF    := $(shell ls init.vim)
 VIMDIRS    := $(shell ls -F | grep / | sed -e "s/\///g")
 DEINCONF   := $(shell ls *.toml)
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
@@ -24,15 +24,16 @@ deploy: ## Create symlink to home directory
 	-@export XDG_CONFIG_HOME=${HOME}/.config
 	-@mkdir -p $(HOME)/.vim/dein
 	-@mkdir -p $(HOME)/.vim/temp
-	-@mkdir -p $(HOME)/.config
 	@$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo -n '...'
 	@$(foreach val, $(DEINCONF),ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo -n '...'
 	@$(foreach val, $(VIMDIRS), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
-	-@echo '...'
+	-@echo -n '...'
+	-@mkdir -p $(HOME)/.config
 	@ln -s ${HOME}/.vim ${HOME}/.config/nvim
-	@ln -s ${HOME}/.vimrc ${HOME}/.config/nvim/init.vim
+	@$(foreach val, $(NVIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
+	-@echo '...'
 	-@rm ../../$(ERRFILE)
 
 list: ## Show dot files in this repository

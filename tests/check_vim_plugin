@@ -46,18 +46,18 @@ function check_plugin() {
 ret=0
 
 # install success?
-yes | timeout -sKILL 300 vim +:q > /dev/null 2>&1
+yes | timeout -sKILL 60 nvim +:q > /dev/null 2>&1
 if [ $? != 0 ]; then
 	echo "Failed install dein, Please install again."
 	exit 1
 fi
 
 # check vim plugin
-vim -V0easymotion.log +"echo g:EasyMotion_keys" +:q
-vim -V0webdevicons.log +"echo g:webdevicons_enable" +:q
-vim -V0ale.log +"echo ale_enabled" +:q
-vim -V0gitgutter.log +"echo gitgutter_enabled" +:q
-vim -V0lightline.log +"echo g:lightline" +:q
+nvim -V0easymotion.log +"echo g:EasyMotion_keys" +:q
+nvim -V0webdevicons.log +"echo g:webdevicons_enable" +:q
+nvim -V0ale.log +"echo ale_enabled" +:q
+nvim -V0gitgutter.log +"echo gitgutter_enabled" +:q
+nvim -V0lightline.log +"echo g:lightline" +:q
 
 #  easymotion plugin check
 check_plugin easymotion.log 2

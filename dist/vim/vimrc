@@ -9,14 +9,10 @@ function! s:source_rc(rc_file_name)
 	endif
 endfunction
 
-" プラグインマネージャdeinの構築
-call s:source_rc('dein.rc.vim')
 " Vimの初期環境設定
 call s:source_rc('init.rc.vim')
 " 外観の設定
 call s:source_rc('view.rc.vim')
-" 文字色設定
-call s:source_rc('color.rc.vim')
 " キーボードやマウス関連の設定
 call s:source_rc('io.rc.vim')
 " キーマッピングの環境構築
