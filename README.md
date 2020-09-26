@@ -121,6 +121,7 @@ dotfilesプロジェクトの全体像を下記に示す。
   * [previm](https://github.com/previm/previm)
   * [open-browser](https://github.com/tyru/open-browser.vim)
   * [vim-localrc](https://github.com/thinca/vim-localrc)
+  * [vim-quickhl](https://github.com/t9md/vim-quickhl)
 
 ## Authors
 [LeavaTail](https://github.com/LeavaTail)

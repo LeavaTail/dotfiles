@@ -50,6 +50,10 @@ hook_add = '''
 [[plugins]]
 repo = 'kshenoy/vim-signature'
 
+[[plugins]]
+repo = 't9md/vim-quickhl'
+hook_add= 'source ~/.vim/plugins/quickhl.rc.vim'
+
 # local vimrc file
 [[plugins]]
 repo = 'thinca/vim-localrc'
