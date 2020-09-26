@@ -4,12 +4,10 @@ TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_vcs$(TIMESTAMP).log
 LOGFILE    := vcs$(TIMESTAMP).log
 
-.PHONY := all deploy init uninstall clean list test help mini
+.PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
 
 all:
-
-mini: deploy ## Run deploy with minimal configuration
 
 deploy: ## Create symlink to home directory
 	-@echo '[vcs]    ==> Start to deploy dotfiles to home directory.'

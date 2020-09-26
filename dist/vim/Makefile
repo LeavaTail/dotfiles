@@ -8,15 +8,8 @@ TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_vim$(TIMESTAMP).log
 LOGFILE    := vim$(TIMESTAMP).log
 
-.PHONY := all deploy init uninstall clean list test help mini
+.PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
-
-mini: ## Run deploy with minimal configuration
-	-@echo '[Vim]    ==> Start to deploy dotfiles to home directory.'
-	-@mkdir -p $(HOME)/.vim/dein
-	-@mkdir -p $(HOME)/.vim/temp
-	@$(foreach val, $(MINICONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vimrc > ../../$(ERRFILE) 2>&1;)
-	-@rm ../../$(ERRFILE)
 
 all:
 deploy: ## Create symlink to home directory

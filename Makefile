@@ -5,7 +5,7 @@ DISTRIBUTION:= dist
 DOTDIRS     := $(shell ls -F $(DISTRIBUTION) | grep / | sed -e "s/\///g")
 DOTFILES    := $(filter-out $(EXCLUSIONS) $(UNSUPPORTED) , $(DOTDIRS))
 
-.PHONY := all deploy list init install update uninstall clean test help mini-install
+.PHONY := all deploy list init install update uninstall clean test help
 .DEFAULT_GOAL := help
 
 all:
@@ -21,9 +21,6 @@ init: ## Setup environment settings
 
 install: check deploy init ## Run make check, deploy, init
 	@./script/errorlog
-
-mini-install: ## Run deploy with minimal configuration
-	@$(foreach val, $(DOTFILES), $(MAKE) mini -C $(DISTRIBUTION)/$(val);)
 
 update: ## Fetch changes for this repo
 	git pull origin master

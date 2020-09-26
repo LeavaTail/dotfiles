@@ -20,6 +20,5 @@ script:
     - "make clean"
     - "make install"
     - "make test"
-    - "tests/check_tmux_plugin"
     - "tests/check_vim_plugin"
     - "script/overhead_vim"
