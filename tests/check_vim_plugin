@@ -57,7 +57,7 @@ vim -V0easymotion.log +"echo g:EasyMotion_keys" +:q
 vim -V0webdevicons.log +"echo g:webdevicons_enable" +:q
 vim -V0ale.log +"echo ale_enabled" +:q
 vim -V0gitgutter.log +"echo gitgutter_enabled" +:q
-vim -V0lightline.log +"echo lightline" +:q
+vim -V0lightline.log +"echo g:lightline" +:q
 
 #  easymotion plugin check
 check_plugin easymotion.log 2

@@ -14,8 +14,10 @@
 # -------------------------------------
 # this script needs one more arguments.
 
-yes | timeout -sKILL 300 vim +:q
+yes | timeout -sKILL 60 vim +:q
+echo "vim plugin installed"
 
+timeout -sKILL 5 vim +:q
 if [ $? != 0 ]; then 
 # タイムアウトしたときの処理
   exit 1
