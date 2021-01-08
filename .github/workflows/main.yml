@@ -31,16 +31,16 @@ jobs:
           sudo apt-get install git make curl wget vim neovim ctags global zsh 
 
       - name: Clean develop environments
-      - run:  make clean
+        run:  make clean
 
       - name: Install each dotfiles
-      - run:  make install
+        run:  make install
 
       - name: Check whether each dotfiles is installed
-      - run:  make test
+        run:  make test
 
       - name: Check whether vim plugins is installed
-      - run:  ./tests/check_vim_plugin
+        run:  ./tests/check_vim_plugin
 
       - name: Check vim performance
-      - run:  ./script/overhead_vim
+        run:  ./script/overhead_vim
