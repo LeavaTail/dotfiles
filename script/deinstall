@@ -14,7 +14,7 @@
 # -------------------------------------
 # this script needs one more arguments.
 
-yes | timeout -sKILL 60 nvim +:q
+timeout -sKILL 60 nvim +:q
 echo "vim plugin installed"
 
 timeout -sKILL 5 nvim +:q
