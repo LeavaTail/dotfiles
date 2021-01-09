@@ -34,7 +34,7 @@ jobs:
         run:  make clean
 
       - name: Install each dotfiles
-        run:  make install | cat ./*log
+        run:  make install
 
       - name: Check whether each dotfiles is installed
         run:  make test
