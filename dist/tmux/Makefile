@@ -10,8 +10,6 @@ LOGFILE    := tmux$(TIMESTAMP).log
 all:
 deploy: ## Create symlink to home directory
 	-@echo '[tmux]   ==> Start to deploy dotfiles to home directory.'
-	-@git clone --depth=1 https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm > ../../$(ERRFILE) 2>&1
-	-@echo -n '...'
 	@$(foreach val, $(DOTFILES), ln -sfnv $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo "..."
 	-@rm ../../$(ERRFILE)
@@ -20,10 +18,7 @@ list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
 
 init: ## Setup environment settings
-	-@echo "[tmux]   ==> Initialize dotfiles."
-	@tmux source $(HOME)/.tmux.conf > ../../$(ERRFILE) 2>&1
-	-@echo '...'
-	-@rm ../../$(ERRFILE)
+	@:
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[Tmux]   ==> Remove only deployed files.'
@@ -32,7 +27,6 @@ uninstall: ## Remove deployed dotfile.
 clean: ## Remove the dot files and this repo
 	-@echo '[Tmux]   ==> Remove all dotfiles for this package.'
 	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val) > $(LOGFILE) 2>&1;)
-	-@rm -vrf $(HOME)/.tmux > $(LOGFILE) 2>&1
 	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
