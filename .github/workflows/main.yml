@@ -38,9 +38,3 @@ jobs:
 
       - name: Check whether each dotfiles is installed
         run:  make test
-
-      - name: Check whether vim plugins is installed
-        run:  ./tests/check_vim_plugin
-
-      - name: Check vim performance
-        run:  ./script/overhead_vim
