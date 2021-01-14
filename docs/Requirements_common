@@ -1,2 +1,4 @@
 git
 make
+wget
+curl

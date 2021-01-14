@@ -1,7 +1,7 @@
 # dotfiles
 
 ![Version](https://img.shields.io/github/tag/LeavaTail/dotfiles.svg)
-[![Build Status](https://travis-ci.org/LeavaTail/dotfiles.svg?branch=master)](https://travis-ci.org/LeavaTail/dotfiles)
+![CI](https://github.com/LeavaTail/dotfiles/workflows/CI/badge.svg))]
 
 Linux用の設定ファイル群
 
@@ -68,10 +68,6 @@ $ make install
 
 設定ファイルをデプロイし、各種アプリケーションの初期設定を実施する
 
-`make mini-install`
-
-最小構成の設定ファイルをデプロイする
-
 `make update`
 
 設定ファイルをリモートの最新リポジトリの状態に更新する
@@ -104,7 +100,7 @@ $ make install
 dotfilesプロジェクトの全体像を下記に示す。
 ![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall.png)
 
-この設定ファイルは、zsh環境に[zprezto](https://github.com/sorin-ionescu/prezto)フレームワーク、tmux環境に[tpm](github.com/tmux-plugins/tpm)プラグインマネージャ、Vim環境に[dein](https://github.com/Shougo/dein.vim)プラグインマネージャを別途使用している。
+この設定ファイルは、zsh環境に[zprezto](https://github.com/sorin-ionescu/prezto)フレームワーク、Vim環境に[dein](https://github.com/Shougo/dein.vim)プラグインマネージャを別途使用している。
 
 1. `make deploy`を実行すると、各環境に設定ファイルのシンボリックリンクを作成し、zprezto/tpm/deinをGitHubからクローンする。
 2. `make init`を実行すると、deinで該当するVimプラグインをインストール、tpmで該当するtmuxプラグインをインストールする。
@@ -121,15 +117,11 @@ dotfilesプロジェクトの全体像を下記に示す。
   * [vim-gitgutter](github.com/airblade/vim-gitgutter)
   * [lightline](https://github.com/itchyny/lightline.vim)
   * [lightline-ale](https://github.com/maximbaz/lightline-ale)
-
-**tmux**
-  * [tpm](https://github.com/tmux-plugins/tpm)
-  * [tmux-sensible](https://github.com/tmux-plugins/tmux-sensible)
-  * [tmux-battery](https://github.com/tmux-plugins/tmux-battery)
-  * [tmux-yank](github.com/tmux-plugins/tmux-yank)
-  * [tmux-open](https://github.com/tmux-plugins/tmux-open)
-  * [tmux-resurrect](github.com/tmux-plugins/tmux-resurrect)
-  * [tmux-pain-control](github.com/tmux-plugins/tmux-pain-control)
+  * [vim-signature](https://github.com/kshenoy/vim-signature)
+  * [previm](https://github.com/previm/previm)
+  * [open-browser](https://github.com/tyru/open-browser.vim)
+  * [vim-localrc](https://github.com/thinca/vim-localrc)
+  * [vim-quickhl](https://github.com/t9md/vim-quickhl)
 
 ## Authors
 [LeavaTail](https://github.com/LeavaTail)

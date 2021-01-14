@@ -28,6 +28,36 @@ hook_add= 'source ~/.vim/plugins/ale.rc.vim'
 repo = 'airblade/vim-gitgutter'
 hook_add= 'source ~/.vim/plugins/gitgutter.rc.vim'
 
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+
+[[plugins]]
+repo = 'lighttiger2505/gtags.vim'
+hook_add= 'source ~/.vim/plugins/gtags.rc.vim'
+
+[[plugins]]
+repo = 'jsfaint/gen_tags.vim'
+hook_add = '''
+    let g:gen_tags#gtags_auto_gen = 1
+    let g:gen_tags#ctags_auto_gen = 1
+'''
+
+# visualize
+[[plugins]]
+repo = 'kshenoy/vim-signature'
+
+[[plugins]]
+repo = 't9md/vim-quickhl'
+hook_add= 'source ~/.vim/plugins/quickhl.rc.vim'
+
+# local vimrc file
+[[plugins]]
+repo = 'thinca/vim-localrc'
+
 # ステータスバーのレイアウト変更
 [[plugins]]
 repo = 'itchyny/lightline.vim'

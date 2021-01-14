@@ -58,4 +58,4 @@ set swapfile
 set directory=~/.vim/temp
 set undofile
 set undodir=~/.vim/temp
-set viminfo+=n~/.vim/temp/.viminfo
+set viminfo+="n~/.vim/temp/.viminfo"

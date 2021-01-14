@@ -5,12 +5,8 @@ TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_zsh$(TIMESTAMP).log
 LOGFILE    := zsh$(TIMESTAMP).log
 
-.PHONY := all deploy init uninstall clean list test help mini
+.PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
-
-
-mini: ## Run deploy with minimal configuration
-	@:
 
 all:
 deploy: ## Create symlink to home directory

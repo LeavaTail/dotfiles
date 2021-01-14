@@ -1,26 +1,20 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
 VIMCONF    := $(shell ls *vimrc)
-MINICONF    := $(shell ls minirc)
+NVIMCONF    := $(shell ls init.vim)
 VIMDIRS    := $(shell ls -F | grep / | sed -e "s/\///g")
 DEINCONF   := $(shell ls *.toml)
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_vim$(TIMESTAMP).log
 LOGFILE    := vim$(TIMESTAMP).log
 
-.PHONY := all deploy init uninstall clean list test help mini
+.PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
-
-mini: ## Run deploy with minimal configuration
-	-@echo '[Vim]    ==> Start to deploy dotfiles to home directory.'
-	-@mkdir -p $(HOME)/.vim/dein
-	-@mkdir -p $(HOME)/.vim/temp
-	@$(foreach val, $(MINICONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vimrc > ../../$(ERRFILE) 2>&1;)
-	-@rm ../../$(ERRFILE)
 
 all:
 deploy: ## Create symlink to home directory
 	-@echo '[Vim]    ==> Start to deploy dotfiles to home directory.'
+	-@export XDG_CONFIG_HOME=${HOME}/.config
 	-@mkdir -p $(HOME)/.vim/dein
 	-@mkdir -p $(HOME)/.vim/temp
 	@$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.$(val) > ../../$(ERRFILE) 2>&1;)
@@ -28,6 +22,10 @@ deploy: ## Create symlink to home directory
 	@$(foreach val, $(DEINCONF),ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo -n '...'
 	@$(foreach val, $(VIMDIRS), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
+	-@echo -n '...'
+	-@mkdir -p $(HOME)/.config
+	@ln -s ${HOME}/.vim ${HOME}/.config/nvim
+	@$(foreach val, $(NVIMCONF), ln -sfn $(DOTPATH)/$(val) $(HOME)/.vim/$(val) > ../../$(ERRFILE) 2>&1;)
 	-@echo '...'
 	-@rm ../../$(ERRFILE)
 
@@ -38,9 +36,9 @@ list: ## Show dot files in this repository
 
 init: ## Setup environment settings
 	-@echo "[Vim]    ==> Initialize dotfiles."
-	@../../script/deinstall > ../../$(ERRFILE) 2>&1
-	-@echo '...'
-	-@rm ../../$(ERRFILE)
+	#@../../script/deinstall > ../../$(ERRFILE) 2>&1
+	#-@echo '...'
+	#-@rm ../../$(ERRFILE)
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[Vim]    ==> Remove only deployed files.'
