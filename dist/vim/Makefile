@@ -36,9 +36,9 @@ list: ## Show dot files in this repository
 
 init: ## Setup environment settings
 	-@echo "[Vim]    ==> Initialize dotfiles."
-	@../../script/deinstall > ../../$(ERRFILE) 2>&1
-	-@echo '...'
-	-@rm ../../$(ERRFILE)
+	#@../../script/deinstall > ../../$(ERRFILE) 2>&1
+	#-@echo '...'
+	#-@rm ../../$(ERRFILE)
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[Vim]    ==> Remove only deployed files.'
