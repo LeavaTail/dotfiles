@@ -25,6 +25,7 @@ Linux用の設定ファイル群
  * zsh (>=4.3.11)
  * tmux (>=1.9)
  * Byobu
+ * nodejs (>=12.12)
 
 最新の情報は下記を参照。
  * [common Required packages](docs/Requirements_common)
