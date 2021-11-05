@@ -13,6 +13,7 @@ Linux用の設定ファイル群
   * tmux
   * vim
   * byobu
+  * tig
 
 ## Install
 ### Requirements
@@ -30,6 +31,7 @@ Linux用の設定ファイル群
  * [about vim Required packages](docs/Requirements_vim)
  * [about tmux Required packages](docs/Requirements_tmux)
  * [about byobu Required packages](docs/Requirements_byobu)
+ * [about tig Required packages](docs/Requirements_tig)
 
 ### Install
 下記のコマンドを実行するだけでデプロイが完了します。
