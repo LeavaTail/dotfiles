@@ -11,10 +11,7 @@ Linux用の設定ファイル群
 このリポジトリには、以下の設定ファイルが保存されています。
   * zsh
   * tmux
-  * emacs
   * vim
-  * latexmk
-  * screen
   * byobu
 
 ## Install
