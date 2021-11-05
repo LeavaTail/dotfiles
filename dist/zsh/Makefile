@@ -11,7 +11,11 @@ LOGFILE    := zsh$(TIMESTAMP).log
 all:
 deploy: ## Create symlink to home directory
 	-@echo '[zsh]    ==> Start to deploy dotfiles to home directory.'
-	-@git clone --recursive --depth=1 -submodules https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../../$(ERRFILE) 2>&1
+	-@git clone --recursive -submodules https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../../$(ERRFILE) 2>&1
+	-@ echo -n "..."
+	-@pushd "$(HOME)/.zprezto"
+	-@git checkout 66cbe2fca25319db2551f0cc74a86c93259017d
+	-@popd
 	-@ echo -n "..."
 	@../../script/zinstall > ../../$(ERRFILE) 2>&1
 	-@ echo "..."

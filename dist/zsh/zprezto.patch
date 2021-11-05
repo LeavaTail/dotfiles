@@ -1,18 +1,26 @@
 diff --git a/runcoms/zpreztorc b/runcoms/zpreztorc
-index 9a3c19a..db06c94 100644
+index cc6ebb4..0e2c252 100644
 --- a/runcoms/zpreztorc
 +++ b/runcoms/zpreztorc
-@@ -38,7 +38,8 @@ zstyle ':prezto:load' pmodule \
-   'spectrum' \
+@@ -39,14 +39,15 @@ zstyle ':prezto:load' pmodule \
    'utility' \
    'completion' \
+   'history-substring-search' \
 -  'prompt'
 +  'prompt' \
 +  'git'
  
  #
  # Autosuggestions
-@@ -63,7 +64,7 @@ zstyle ':prezto:load' pmodule \
+ #
+ 
+ # Set the query found color.
+-# zstyle ':prezto:module:autosuggestions:color' found ''
++zstyle ':prezto:module:autosuggestions:color' found ''
+ 
+ #
+ # Completions
+@@ -64,7 +65,7 @@ zstyle ':prezto:load' pmodule \
  zstyle ':prezto:module:editor' key-bindings 'emacs'
  
  # Auto convert .... to ../..
@@ -21,7 +29,7 @@ index 9a3c19a..db06c94 100644
  
  # Allow the zsh prompt context to be shown.
  #zstyle ':prezto:module:editor' ps-context 'yes'
-@@ -116,12 +117,12 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
+@@ -117,12 +118,12 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
  # Set the prompt theme to load.
  # Setting it to 'random' loads a random theme.
  # Auto set to 'off' on dumb terminals.
