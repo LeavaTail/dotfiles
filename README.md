@@ -1,7 +1,7 @@
 # dotfiles
 
 ![Version](https://img.shields.io/github/tag/LeavaTail/dotfiles.svg)
-![CI](https://github.com/LeavaTail/dotfiles/workflows/CI/badge.svg))]
+![CI](https://github.com/LeavaTail/dotfiles/workflows/CI/badge.svg)
 
 Linux用の設定ファイル群
 
