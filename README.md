@@ -125,5 +125,9 @@ dotfilesプロジェクトの全体像を下記に示す。
   * [previm](https://github.com/previm/previm)
   * [open-browser](https://github.com/tyru/open-browser.vim)
 
+また、zshは下記のバージョンのzpreztoをベースとしている。
+
+  * [zprezto](https://github.com/sorin-ionescu/prezto/commit/166cbe2fca25319db2551f0cc74a86c93259017d)
+
 ## Authors
 [LeavaTail](https://github.com/LeavaTail)
