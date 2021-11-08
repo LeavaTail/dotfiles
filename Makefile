@@ -1,6 +1,6 @@
 DOTPATH     := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 EXCLUSIONS  := .DS_Store .git .gitmodules .travis.yml
-UNSUPPORTED := vcs emacs screen tex
+UNSUPPORTED := vcs byobu emacs screen tex
 DISTRIBUTION:= dist
 DOTDIRS     := $(shell ls -Fr $(DISTRIBUTION) | grep / | sed -e "s/\///g")
 DOTFILES    := $(filter-out $(EXCLUSIONS) $(UNSUPPORTED) , $(DOTDIRS))
