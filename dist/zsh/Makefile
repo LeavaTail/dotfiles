@@ -5,6 +5,8 @@ TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_zsh$(TIMESTAMP).log
 LOGFILE    := zsh$(TIMESTAMP).log
 
+SHELL = /bin/bash
+
 .PHONY := all deploy init uninstall clean list test help
 .DEFAULT_GOAL := help
 
@@ -13,9 +15,7 @@ deploy: ## Create symlink to home directory
 	-@echo '[zsh]    ==> Start to deploy dotfiles to home directory.'
 	-@git clone --recursive -submodules https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../../$(ERRFILE) 2>&1
 	-@ echo -n "..."
-	-@pushd "$(HOME)/.zprezto"
-	-@git checkout 66cbe2fca25319db2551f0cc74a86c93259017d
-	-@popd
+	-@cd $(HOME)/.zprezto && git checkout 166cbe2fca25319db2551f0cc74a86c93259017d
 	-@ echo -n "..."
 	@../../script/zinstall > ../../$(ERRFILE) 2>&1
 	-@ echo "..."
