@@ -2,7 +2,7 @@ DOTPATH     := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 EXCLUSIONS  := .DS_Store .git .gitmodules .travis.yml
 UNSUPPORTED := vcs emacs screen tex
 DISTRIBUTION:= dist
-DOTDIRS     := $(shell ls -F $(DISTRIBUTION) | grep / | sed -e "s/\///g")
+DOTDIRS     := $(shell ls -Fr $(DISTRIBUTION) | grep / | sed -e "s/\///g")
 DOTFILES    := $(filter-out $(EXCLUSIONS) $(UNSUPPORTED) , $(DOTDIRS))
 
 .PHONY := all deploy list init install update uninstall clean test help
