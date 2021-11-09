@@ -14,12 +14,12 @@
 # -------------------------------------
 # this script needs one more arguments.
 
-yes | timeout -sKILL 60 nvim +:q
+timeout -sKILL 120 nvim +:q
 echo "vim plugin installed"
 
-timeout -sKILL 5 nvim +:q
+timeout -sKILL 60 nvim +:q
 if [ $? != 0 ]; then 
-# タイムアウトしたときの処理
+  echo "Failed to install vim"
   exit 1
 fi
 

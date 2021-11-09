@@ -1,0 +1,14 @@
+set commit-order	= default
+set diff-highlight	= true
+
+# Color
+color "    Issue: "		yellow	default
+color "    refs: "		yellow	default
+color "    cherry picked from commit("		yellow	default
+color "    Conflicts: "	red default bold
+
+# binding
+bind generic g	move-first-line
+bind generic E	view-grep
+bind generic G	move-last-line
+bind main    G	move-last-line

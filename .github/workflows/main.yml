@@ -28,7 +28,7 @@ jobs:
       - name: Install depends packages
         run: |
           sudo apt-get update
-          sudo apt-get install git make curl wget vim neovim ctags global zsh 
+          sudo apt-get install git make curl wget vim neovim ctags global zsh tig
 
       - name: Clean develop environments
         run:  make clean
