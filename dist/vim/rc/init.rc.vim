@@ -38,24 +38,3 @@ set shiftwidth=4
 set smarttab
 " autoindentと同様だがCライクのインデント
 set smartindent
-
-" Undo/Redo を300回保存する
-set undolevels=300
-" コマンド・検索パターンの履歴
-set history=10000
-
-" エンコーディング
-set encoding=UTF-8
-scriptencoding UTF-8
-set fileencoding=UTF-8
-set termencoding=UTF-8
-
-" 自動生成されるメタファイルの設定
-set backup
-set backupdir=~/.vim/temp
-set backupext=.back
-set swapfile
-set directory=~/.vim/temp
-set undofile
-set undodir=~/.vim/temp
-set viminfo+="n~/.vim/temp/.viminfo"

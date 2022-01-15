@@ -11,10 +11,14 @@ endfunction
 
 " プラグインマネージャdeinの構築
 call s:source_rc('dein.rc.vim')
+" エンコーディング
+call s:source_rc('encoding.rc.vim')
 " Vimの初期環境設定
 call s:source_rc('init.rc.vim')
 " 外観の設定
 call s:source_rc('view.rc.vim')
+" メタファイル
+call s:source_rc('metafile.rc.vim')
 " キーボードやマウス関連の設定
 call s:source_rc('io.rc.vim')
 " キーマッピングの環境構築
