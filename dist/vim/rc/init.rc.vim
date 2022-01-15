@@ -41,9 +41,9 @@ set switchbuf=useopen
 " 編集中のファイルが変更されたら自動で読み直す
 set autoread
 " タブ文字幅
-set tabstop=4
+set tabstop=8
 " 自動インデントの幅
-set shiftwidth=4
+set shiftwidth=8
 " 行頭の余白内で Tab を打ち込むとshiftwidthの数だけインデントする
 set smarttab
 " autoindentと同様だがCライクのインデント
