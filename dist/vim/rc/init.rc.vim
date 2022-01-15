@@ -24,18 +24,12 @@ set cmdheight=2
 set showcmd
 " 行を強調表示
 set cursorline
-" ページ送りで行頭に移動しない
-set nostartofline
 " 対応括弧に<と>のペアを追加
 set matchpairs& matchpairs+=<:>
 " 対応括弧のハイライトを表示する
 set showmatch
-" 対応括弧の表示秒数を3 秒にする
-set matchtime=3	
 " ウインドウの幅が長い行は折り返す
 set wrap
-" 入力されているテキストの最大幅を無効にする
-set textwidth=0
 " インデントをshiftwidthの倍数に丸める
 set shiftround
 " 補完の際の大文字小文字の区別しない

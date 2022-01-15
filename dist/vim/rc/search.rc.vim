@@ -8,5 +8,3 @@ set hlsearch
 set wrapscan
 " ファイル名のタブ補完
 set wildmenu wildmode=list:full
-" 置換の時 g オプションをデフォルトで有効にする
-set gdefault
