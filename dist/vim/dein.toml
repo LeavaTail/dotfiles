@@ -8,7 +8,8 @@ build = 'make'
 
 # カラースキーム
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'ntk148v/vim-horizon'
+hook_add= 'source ~/.vim/plugins/horizon.rc.vim'
 
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'

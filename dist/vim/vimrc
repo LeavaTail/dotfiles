@@ -15,8 +15,6 @@ call s:source_rc('dein.rc.vim')
 call s:source_rc('init.rc.vim')
 " 外観の設定
 call s:source_rc('view.rc.vim')
-" 文字色設定
-call s:source_rc('color.rc.vim')
 " キーボードやマウス関連の設定
 call s:source_rc('io.rc.vim')
 " キーマッピングの環境構築
