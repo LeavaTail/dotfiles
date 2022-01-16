@@ -1,5 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+METADIRS   := .INTERNAL
 ZDIR       := "${HOME}/.zprezto/runcoms"
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_zsh$(TIMESTAMP).log
@@ -17,7 +18,7 @@ deploy: ## Create symlink to home directory
 	-@ echo -n "..."
 	-@cd $(HOME)/.zprezto && git checkout 166cbe2fca25319db2551f0cc74a86c93259017d
 	-@ echo -n "..."
-	@../../script/zinstall > ../../$(ERRFILE) 2>&1
+	@../$(METADIRS)/scripts/zinstall.sh > ../../$(ERRFILE) 2>&1
 	-@ echo "..."
 	-@rm ../../$(ERRFILE)
 
@@ -26,7 +27,7 @@ list: ## Show dot files in this repository
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[zsh]    ==> Remove only deployed files.'
-	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../../script/removelink $(ZDIR)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../$(METADIRS)/scripts/removelink.sh $(ZDIR)/$(val) $(HOME)/.$(val);)
 
 init: ## Setup environment settings
 	-@echo "[zsh]    ==> Initialize dotfiles."
@@ -41,7 +42,7 @@ clean: ## Remove the dot files and this repo
 	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
-	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../../script/checkfile $(ZDIR)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(filter-out README.md, $(shell ls -F $(ZDIR))), ../$(METADIRS)/scripts/checkfile.sh $(ZDIR)/$(val) $(HOME)/.$(val);)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \

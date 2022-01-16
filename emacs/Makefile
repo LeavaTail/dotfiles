@@ -1,5 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+METADIRS   := .INTERNAL
 CONFDIR    := .emacs.d
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_emacs$(TIMESTAMP).log
@@ -26,7 +27,7 @@ init: ## Setup environment settings
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[emacs]  ==> Remove only deployed files.'
-	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val);)
+	-@$(foreach val, $(DOTFILES), ../$(METADIRS)/scripts/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the emacs setting files
 	-@echo '[emacs]  ==> Remove all dotfiles for this package.'
@@ -34,7 +35,7 @@ clean: ## Remove the emacs setting files
 	-@rm $(LOGFILE)
 
 test: ## Test dotfiles and init script
-	-@$(foreach val, $(DOTFILES), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/$(CONFDIR)/$(val);)
+	-@$(foreach val, $(DOTFILES), ../$(METADIRS)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \

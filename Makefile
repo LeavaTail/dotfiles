@@ -21,7 +21,7 @@ init: ## Setup environment settings
 	@$(foreach val, $(DOTFILES), $(MAKE) init -C $(DISTRIBUTION)/$(val);)
 
 install: check deploy init ## Run make check, deploy, init
-	@./$(METADIRS)/scripts/errorlog
+	@./$(METADIRS)/scripts/errorlog.sh
 
 update: ## Fetch changes for this repo
 	git pull origin master
@@ -35,7 +35,7 @@ uninstall: ## Remove deployed dotfile.
 
 check: ## Check required package in your system.
 	@echo 'Check required package.'
-	@./$(METADIRS)/scripts/checkpackage ${METADIRS}/docs/
+	@./$(METADIRS)/scripts/checkpackage.sh ${METADIRS}/docs/
 
 clean: ## Remove all dotfiles
 	@echo 'Remove all dotfiles in home directory.'

@@ -1,5 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+METADIRS   := .INTERNAL
 VIMCONF    := $(shell ls *vimrc)
 NVIMCONF    := $(shell ls init.vim)
 VIMDIRS    := $(shell ls -F | grep / | sed -e "s/\///g")
@@ -42,9 +43,9 @@ init: ## Setup environment settings
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[Vim]    ==> Remove only deployed files.'
-	-@$(foreach val, $(VIMCONF), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
-	-@$(foreach val, $(DEINCONF), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
-	-@$(foreach val, $(VIMDIRS), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
+	-@$(foreach val, $(VIMCONF), ../$(METADIRS)/scripts/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DEINCONF), ../$(METADIRS)/scripts/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(VIMDIRS), ../$(METADIRS)/scripts/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dot files and this repo
 	-@echo '[Vim]    ==> Remove all dotfiles for this package.'
@@ -55,9 +56,9 @@ clean: ## Remove the dot files and this repo
 	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
-	-@$(foreach val, $(VIMCONF), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)
-	-@$(foreach val, $(DEINCONF), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
-	-@$(foreach val, $(VIMDIRS), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
+	-@$(foreach val, $(VIMCONF), ../$(METADIRS)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DEINCONF), ../$(METADIRS)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
+	-@$(foreach val, $(VIMDIRS), ../$(METADIRS)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.vim/$(val);)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \

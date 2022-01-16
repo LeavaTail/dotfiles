@@ -1,5 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+METADIRS   := .INTERNAL
 TIMESTAMP  := $(shell date "+%Y%m%d_%H%M%S")
 ERRFILE    := error_vcs$(TIMESTAMP).log
 LOGFILE    := vcs$(TIMESTAMP).log
@@ -23,7 +24,7 @@ init: ## Setup environment settings
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[vcs]    ==> Remove only deployed files.'
-	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DOTFILES), ../$(METADIRS)/scripts/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dot files and this repo
 	-@echo '[vcs]    ==> Remove all dotfiles for this package.'
@@ -31,7 +32,7 @@ clean: ## Remove the dot files and this repo
 	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
-	-@$(foreach val, $(DOTFILES), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DOTFILES), ../$(METADIRS)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \

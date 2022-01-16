@@ -23,7 +23,7 @@ init: ## Setup environment settings
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[TeX]    ==> Remove only deployed files.'
-	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DOTFILES), ../$(METADIRS)/scripts/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dot files and this repo
 	-@echo '[TeX]    ==> Remove all dotfiles for this package.'
@@ -31,7 +31,7 @@ clean: ## Remove the dot files and this repo
 	-@rm $(LOGFILE)
 
 test: ## make sure that dotfiles is correst deploy
-	-@$(foreach val, $(DOTFILES), ../../script/checkfile $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DOTFILES), ../$(METADIRS)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \

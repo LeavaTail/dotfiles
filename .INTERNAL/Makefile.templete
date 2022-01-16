@@ -1,5 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+METADIRS   := .INTERNAL
 
 .PHONY := all deploy list init uninstall clean test help
 .DEFAULT_GOAL := help
@@ -18,7 +19,7 @@ init: ## Setup environment settings
 	@echo "[XXX] Initialize dotfiles..."
 
 uninstall: ## Remove deployed dotfile.
-	-@$(foreach val, $(DOTFILES), ../../script/removelink $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DOTFILES), ../$(METADIRS)/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 clean: ## Remove the dotfiles and this repo
 	@echo 'Remove dot files in your home directory...'
@@ -26,7 +27,7 @@ clean: ## Remove the dotfiles and this repo
 
 test: ## make sure that dotfiles is correst deploy
 	@echo 'confirm dotfile is correct deploy...'
-	-$(foreach val, $(DOTFILES), ../../script/checkfile i$(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-$(foreach val, $(DOTFILES), ../$(METADIRS)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
 
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
