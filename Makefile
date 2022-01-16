@@ -29,7 +29,8 @@ uninstall: ## Remove deployed dotfile.
 
 check: ## Check required package in your system.
 	@echo 'Check required package.'
-	@$(BASEPATH)/scripts/checkpackage.sh common/docs/
+	-@$(BASEPATH)/scripts/checkpackage.sh common
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 clean: ## Remove all dotfiles
 	@echo 'Remove all dotfiles in home directory.'

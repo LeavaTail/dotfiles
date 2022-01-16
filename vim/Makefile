@@ -1,9 +1,10 @@
 include ../common/basic.mk
 include ../common/target.mk
 
+ADDEXCLUSIONS := docs tests
 VIMCONF    := $(shell ls *vimrc)
 NVIMCONF    := $(shell ls init.vim)
-VIMDIRS    := $(shell ls -F | grep / | sed -e "s/\///g")
+VIMDIRS    := $(filter-out $(EXCLUSIONS) $(ADDEXCLUSIONS), $(shell ls -F | grep / | sed -e "s/\///g"))
 DOTFILES   := "$(VIMCONF) $(NVIMCONF) $(VIMDIRS)"
 
 

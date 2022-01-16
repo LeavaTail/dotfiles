@@ -1,7 +1,8 @@
 include ../common/basic.mk
 include ../common/target.mk
 
-DOTFILES   := $(shell /bin/ls | sed -e "s/Makefile//")
+ADDEXCLUSIONS := docs tests
+DOTFILES      := $(filter-out $(EXCLUSIONS) $(ADDEXCLUSIONS), $(shell /bin/ls | sed -e "s/Makefile//"))
 CONFDIR    := .emacs.d
 
 
