@@ -29,12 +29,12 @@ Linux用の設定ファイル群
 
 最新の情報は下記を参照。
 
-* [common Required packages](.INTERNAL/docs/Requirements_common.txt)
-* [about zsh Required packages](.INTERNAL/docs/Requirements_zsh.txt)
-* [about vim Required packages](.INTERNAL/docs/Requirements_vim.txt)
-* [about tmux Required packages](.INTERNAL/docs/Requirements_tmux.txt)
-* [about byobu Required packages](.INTERNAL/docs/Requirements_byobu.txt)
-* [about tig Required packages](.INTERNAL/docs/Requirements_tig.txt)
+* [common Required packages](common/docs/Requirements_common.txt)
+* [about zsh Required packages](common/docs/Requirements_zsh.txt)
+* [about vim Required packages](common/docs/Requirements_vim.txt)
+* [about tmux Required packages](common/docs/Requirements_tmux.txt)
+* [about byobu Required packages](common/docs/Requirements_byobu.txt)
+* [about tig Required packages](common/docs/Requirements_tig.txt)
 
 ## Start-Up
 

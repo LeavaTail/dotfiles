@@ -1,0 +1,23 @@
+all:
+
+deploy: ## Create symbolic link to your local directory.
+
+list: ## Show dot files in this repository
+	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
+
+init: ## Setup environment settings
+
+install: ## Run make check, deploy, init
+
+update: ## Fetch changes for this repo
+
+uninstall: ## Remove deployed dotfile.
+	-@echo '[$(TARGET)]  ==> Remove only deployed files.'
+	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
+
+check: ## Check required package in your system.
+
+clean: ## Remove all dotfiles
+
+test: ## Test dotfiles and init script
+	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)

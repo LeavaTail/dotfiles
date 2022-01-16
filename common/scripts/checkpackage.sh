@@ -1,4 +1,4 @@
-#!/bin/bash -xeu
+#!/bin/bash
 #
 # usage:
 #   checkpackage application
