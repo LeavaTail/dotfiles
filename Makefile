@@ -1,7 +1,8 @@
 DOTPATH     := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 EXCLUSIONS  := .DS_Store .git .gitmodules .travis.yml
+METADIRS    := .INTERNAL
 UNSUPPORTED := vcs byobu emacs screen tex
-DISTRIBUTION:= dist
+DISTRIBUTION:= .
 DOTDIRS     := $(shell ls -Fr $(DISTRIBUTION) | grep / | sed -e "s/\///g")
 DOTFILES    := $(filter-out $(EXCLUSIONS) $(UNSUPPORTED) , $(DOTDIRS))
 
@@ -20,7 +21,7 @@ init: ## Setup environment settings
 	@$(foreach val, $(DOTFILES), $(MAKE) init -C $(DISTRIBUTION)/$(val);)
 
 install: check deploy init ## Run make check, deploy, init
-	@./script/errorlog
+	@./$(METADIRS)/scripts/errorlog
 
 update: ## Fetch changes for this repo
 	git pull origin master
@@ -34,7 +35,7 @@ uninstall: ## Remove deployed dotfile.
 
 check: ## Check required package in your system.
 	@echo 'Check required package.'
-	@./script/checkpackage ./docs/
+	@./$(METADIRS)/scripts/checkpackage ${METADIRS}/docs/
 
 clean: ## Remove all dotfiles
 	@echo 'Remove all dotfiles in home directory.'
