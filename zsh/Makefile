@@ -3,7 +3,7 @@ include ../common/target.mk
 
 DOTFILES   :=
 COMMIT     := 166cbe2fca25319db2551f0cc74a86c93259017d
-SHELL = /bin/bash
+SHELL       = /bin/bash
 
 
 deploy: ## Create symlink to home directory
