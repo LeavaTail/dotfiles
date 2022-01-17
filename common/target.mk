@@ -13,7 +13,7 @@ update: ## Fetch changes for this repo
 
 uninstall: ## Remove deployed dotfile.
 	-@echo '[$(TARGET)]  ==> Remove only deployed files.'
-	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/removelink.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/removelink.sh $(val);)
 
 check: ## Check required package in your system.
 	-@$(BASEPATH)/scripts/checkpackage.sh $(TARGET)
@@ -21,4 +21,4 @@ check: ## Check required package in your system.
 clean: ## Remove all dotfiles
 
 test: ## Test dotfiles and init script
-	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/checkfile.sh $(DOTPATH)/$(val) $(HOME)/.$(val);)
+	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/checkfile.sh $(val);)

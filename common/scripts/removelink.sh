@@ -1,44 +1,24 @@
-#!/bin/bash
+#!/bin/bash -eu
 #
 # usage:
-#   removelink file dotfile
+#   removelink file
 # ex.:
-#   removelink /home/user/dotfile/dist/vim/vimrc /home/user/.vimrc
+#   removelink /home/user/.vimrc
 #
 # description:
-#   remove dotfile link
+#   remove dotfile link if files is one of the dotfiles
 #
 # return:
 #    0: succeed
-#   -1: command wrong usage
+#    1: command wrong usage
 
-
-function rmonlylink() {
-	DOTFILE=`basename $2`
-	if [[ -h $2 ]]; then
-		LINKPATH=`readlink -f $2`
-		DOTFILE=`basename $1`
-		if [ $1 = ${LINKPATH} ]; then
-			echo "  remove dotfile \"${DOTFILE}\""
-			rm -rf $2
-		fi
-	else
-		exit 0
-	fi
-}
-
-# -------------------------------------
-# MAIN SCRIPT                          
-# -------------------------------------
-# this script needs one more arguments.
-if [ "$#" != 2 ]; then
+# Invalid usage
+if [ "$#" != 1 ]; then
 	echo "ERROR: command usage was wrong." 1>&2
-	exit -1
+	exit 1
 fi
 
-if [[ ! -e $1 ]]; then
-	echo "ERROR: Not found $1." 1>&2
-	exit -1
+./checkfile.sh $1 | grep '[*]'
+if [ $? = 0 ]; then
+	rm -f $1
 fi
-
-rmonlylink $1 $2

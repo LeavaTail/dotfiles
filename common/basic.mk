@@ -7,6 +7,8 @@ ERRFILE     := error_$(TARGET)_$(TIMESTAMP).log
 LOGFILE     := log_$(TARGET)_$(TIMESTAMP).log
 MAKEFILE    := Makefile
 
+ADDEXCLUSIONS := docs tests scripts
+
 .PHONY := all deploy list init install update uninstall clean test help
 .DEFAULT_GOAL := help
 
