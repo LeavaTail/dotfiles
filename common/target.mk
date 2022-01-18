@@ -3,7 +3,7 @@ all:
 deploy: ## Create symbolic link to your local directory.
 
 list: ## Show dot files in this repository
-	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
+	-@$(foreach val, $(DOTFILES), echo "$(val)";)
 	@:
 
 init: ## Setup environment settings
