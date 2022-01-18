@@ -1,3 +1,5 @@
+" Vim設定ファイルを格納するディレクトリ
+let g:runtimedir = expand('~/.vim')
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir      = g:runtimedir . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'

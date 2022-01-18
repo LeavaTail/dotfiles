@@ -33,7 +33,7 @@ deploy: ## Create symlink to home directory
 
 init: ## Setup environment settings
 	-@echo "[$(TARGET)]    ==> Initialize dotfiles."
-	-@git clone https://github.com/Shougo/dein.vim.git ~/.vim/repos/github.com/Shougo/dein.vim > ../$(ERRFILE) 2>&1
+	-@nvim -V -n -e -s -S $(DOTPATH)/rc/dein.rc.vim > ../$(ERRFILE) 2>&1
 	-@echo '...'
 	-@rm ../$(ERRFILE)
 
