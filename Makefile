@@ -9,7 +9,7 @@ deploy: ## Create symbolic link to your local directory.
 	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 list: ## Show dot files in this repository
-	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ --no-print-directory -C $(val);)
 
 init: ## Setup environment settings
 	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
@@ -30,11 +30,11 @@ uninstall: ## Remove deployed dotfile.
 check: ## Check required package in your system.
 	@echo 'Check required package.'
 	-@$(BASEPATH)/scripts/checkpackage.sh common
-	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ --no-print-directory -C $(val);)
 
 clean: ## Remove all dotfiles
 	@echo 'Remove all dotfiles in home directory.'
 	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 test: ## Test dotfiles and init script
-	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ --no-print-directory -C $(val);)
