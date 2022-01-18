@@ -1,6 +1,6 @@
 include common/basic.mk
 
-DISTRIBUTION  := tig tmux vim zsh
+DISTRIBUTION  := tig tmux vim zsh byobu
 
 
 all:
