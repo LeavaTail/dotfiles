@@ -2,15 +2,15 @@ include ../common/basic.mk
 include ../common/target.mk
 
 BYOBUCONF     := $(filter-out $(EXCLUSIONS) $(ADDEXCLUSIONS), $(shell /bin/ls | sed -e "s/Makefile//"))
-BYOBUDIR      := $(HOME)/.byobu/
-BYOBUCONFPATH := $(foreach val, $(BYOBUCONF), $(addsuffix .$(val), $(BYOBUDIR)))
+BYOBUDIR      := $(HOME)/.byobu
+BYOBUCONFPATH := $(foreach val, $(BYOBUCONF), $(addsuffix $(val), $(BYOBUDIR)/))
 
 DOTFILES      := $(BYOBUCONFPATH)
 
 deploy: ## Create symlink to home directory
 	-@echo '[$(TARGET)] ==> Start to deploy dotfiles to home directory.'
 	-@mkdir -p $(BYOBUDIR)
-	@$(foreach val, $(DOTFILES), ln -sfnv $(val) $(BYOBUDIR)$(BYOBUCONF) > ../$(ERRFILE) 2>&1;)
+	$(foreach val, $(BYOBUCONF), ln -sfnv $(DOTPATH)/$(val) $(BYOBUDIR)/$(val) > ../$(ERRFILE) 2>&1;)
 	-@echo '...'
 	-@rm ../$(ERRFILE)
 
