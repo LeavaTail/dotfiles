@@ -3,7 +3,7 @@ include ../common/target.mk
 
 TIGCONF      := $(filter-out $(EXCLUSIONS) $(ADDEXCLUSIONS), $(shell /bin/ls | sed -e "s/Makefile//"))
 TIGDIR       := $(HOME)
-TIGCONFPATH  := $(foreach val, $(TIGCONF), $(addsuffix .$(val), $(TIGDIR)))
+TIGCONFPATH  := $(foreach val, $(TIGCONF), $(addsuffix .$(val), $(TIGDIR)/))
 
 DOTFILES     := $(TIGCONFPATH)
 
