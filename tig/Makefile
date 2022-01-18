@@ -2,14 +2,14 @@ include ../common/basic.mk
 include ../common/target.mk
 
 TIGCONF      := $(filter-out $(EXCLUSIONS) $(ADDEXCLUSIONS), $(shell /bin/ls | sed -e "s/Makefile//"))
-TIGDIR       := $(HOME)/
+TIGDIR       := $(HOME)
 TIGCONFPATH  := $(foreach val, $(TIGCONF), $(addsuffix .$(val), $(TIGDIR)))
 
 DOTFILES     := $(TIGCONFPATH)
 
 deploy: ## Create symlink to home directory
 	-@echo '[$(TARGET)]    ==> Start to deploy dotfiles to home directory.'
-	@$(foreach val, $(TIGCONF), ln -sfnv $(DOTPATH)$(val) $(TIGDIR).$(val) > ../$(ERRFILE) 2>&1;)
+	@$(foreach val, $(TIGCONF), ln -sfnv $(DOTPATH)/$(val) $(TIGDIR)/.$(val) > ../$(ERRFILE) 2>&1;)
 	-@echo '...'
 	-@rm ../$(ERRFILE)
 
