@@ -43,3 +43,5 @@ clean: ## Remove the dot files and this repo
 	rm -vrf $(NVIMDIR) > ../$(LOGFILE) 2>&1
 	rm -vrf $(CONFDIR) > ../$(LOGFILE) 2>&1
 	rm ../$(LOGFILE)
+
+test: pretest ## Test dotfiles and init script

@@ -27,3 +27,5 @@ clean: ## Remove the dot files and this repo
 	-@rm -vrf $(HOME)/.zsh* $(HOME)/.zlog* $(HOME)/.zpr* > ../$(LOGFILE) 2>&1
 	-@rm -vrf $(HOME)/.zprezto > ../$(LOGFILE) 2>&1
 	-@rm ../$(LOGFILE)
+
+test: pretest ## Test dotfiles and init script

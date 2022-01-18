@@ -23,3 +23,5 @@ clean: ## Remove the dot files and this repo
 	-@echo '[$(TARGET)] ==> Remove all dotfiles for this package.'
 	-@$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.byobu > ../$(LOGFILE) 2>&1;)
 	-@rm ../$(LOGFILE)
+
+test: pretest ## Test dotfiles and init script

@@ -9,7 +9,7 @@ MAKEFILE    := Makefile
 
 ADDEXCLUSIONS := docs tests scripts
 
-.PHONY := all deploy list init install update uninstall clean test help
+.PHONY := all deploy list init install update uninstall clean pretest test help
 .DEFAULT_GOAL := help
 
 all:
@@ -29,6 +29,8 @@ uninstall: ## Remove deployed dotfile.
 check: ## Check required package in your system.
 
 clean: ## Remove all dotfiles
+
+pretest: ## Check whether dotfiles was deployed correctly
 
 test: ## Test dotfiles and init script
 

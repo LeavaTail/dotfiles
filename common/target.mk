@@ -20,5 +20,5 @@ check: ## Check required package in your system.
 
 clean: ## Remove all dotfiles
 
-test: ## Test dotfiles and init script
+pretest: ## Test dotfiles and init script
 	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/checkfile.sh $(val);)

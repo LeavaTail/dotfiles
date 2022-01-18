@@ -77,9 +77,13 @@ user@hostname:${WORK}/dotfiles$ make uninstall
 
 該当するドットファイルに関連するすべてのファイルを削除する
 
-`make test`
+`make pretest`
 
 ドットファイルが正常に展開されたか検証する
+
+`make test`
+
+ドットファイルが正常に展開され、期待した動作をするかどうか検証する
 
 `make help`
 
