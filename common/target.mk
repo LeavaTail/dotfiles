@@ -17,7 +17,7 @@ uninstall: ## Remove deployed dotfile.
 	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/removelink.sh $(val);)
 
 check: ## Check required package in your system.
-	-@$(BASEPATH)/scripts/checkpackage.sh $(TARGET)
+	@$(BASEPATH)/scripts/checkpackage.sh $(TARGET)
 
 clean: ## Remove all dotfiles
 
