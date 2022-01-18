@@ -7,7 +7,7 @@ Linux用の設定ファイル群
 
 ## Description
 
-![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20191214.png)
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220119.png)
 
 このリポジトリには、以下の設定ファイルが保存されています。
 
@@ -96,12 +96,13 @@ user@hostname:${WORK}/dotfiles$ make uninstall
 ## Overall
 
 dotfilesプロジェクトの全体像を下記に示す。
-![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall.png)
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall20220119.png)
 
 この設定ファイルは、zsh環境に[zprezto](https://github.com/sorin-ionescu/prezto)フレームワーク、Vim環境に[dein](https://github.com/Shougo/dein.vim)プラグインマネージャを別途使用している。
+そのため、本dotfilesのインストール手順は2つのフェーズ(`deploy`と`init`)に分割している。
 
-1. `make deploy`を実行すると、各環境に設定ファイルのシンボリックリンクを作成し、zprezto/tpm/deinをGitHubからクローンする。
-2. `make init`を実行すると、deinで該当するVimプラグインをインストール、tpmで該当するtmuxプラグインをインストールする。
+1. `make deploy`を実行すると、各設定ファイルに対してシンボリックリンクを作成する
+2. `make init`を実行すると、zpreztoをGitHubからクローンし、独自のパッチを当てる
 
 新規にインストールするプラグインは以下の通り。
 
@@ -109,7 +110,7 @@ dotfilesプロジェクトの全体像を下記に示す。
 
 * [dein](https://github.com/Shougo/dein.vim)
 * [vimproc](https://github.com/Shougo/vimproc.vim)
-* [onedark](https://github.com/joshdick/onedark.vim)
+* [vim-horizon](https://github.com/ntk148v/vim-horizon)
 * [vim-easymotion](github.com/easymotion/vim-easymotion)
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 * [coc](https://github.com/neoclide/coc.nvim)
