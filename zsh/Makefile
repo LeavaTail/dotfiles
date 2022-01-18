@@ -12,7 +12,7 @@ deploy: ## Create symlink to home directory
 	-@ echo -n "..."
 	-@cd $(HOME)/.zprezto && git checkout $(COMMIT)
 	-@ echo -n "..."
-	@$(BASEPATH)/scripts/zinstall.sh > ../$(ERRFILE) 2>&1
+	@$(DOTPATH)/scripts/zinstall.sh > ../$(ERRFILE) 2>&1
 	-@ echo "..."
 	-@rm ../$(ERRFILE)
 
