@@ -4,6 +4,7 @@ deploy: ## Create symbolic link to your local directory.
 
 list: ## Show dot files in this repository
 	-@$(foreach val, $(DOTFILES), echo " * $(val)";)
+	@:
 
 init: ## Setup environment settings
 
@@ -22,3 +23,4 @@ clean: ## Remove all dotfiles
 
 pretest: ## Test dotfiles and init script
 	-@$(foreach val, $(DOTFILES), $(BASEPATH)/scripts/checkfile.sh $(val);)
+	@:
