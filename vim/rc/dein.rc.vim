@@ -33,3 +33,5 @@ endif
 if dein#check_install()
 	call dein#install()
 endif
+
+call dein#recache_runtimepath()
