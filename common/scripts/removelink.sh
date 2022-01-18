@@ -18,7 +18,8 @@ if [ "$#" != 1 ]; then
 	exit 1
 fi
 
-./checkfile.sh $1 | grep '[*]'
+CURRENT=$(realpath "$(dirname ${BASH_SOURCE})")
+${CURRENT}/checkfile.sh $1 | grep '[*]'
 if [ $? = 0 ]; then
 	rm -f $1
 fi
