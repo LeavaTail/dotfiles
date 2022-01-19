@@ -122,8 +122,6 @@ dotfilesプロジェクトの全体像を下記に示す。
 * [vim-localrc](https://github.com/thinca/vim-localrc)
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [vim-toml](https://github.com/cespare/vim-toml)
-* [previm](https://github.com/previm/previm)
-* [open-browser](https://github.com/tyru/open-browser.vim)
 
 また、zshは下記のバージョンのzpreztoをベースとしている。
 
