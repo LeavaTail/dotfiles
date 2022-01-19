@@ -5,14 +5,14 @@ let g:lightline = {
         \   'left': [
             \     ['mode', 'paste'],
             \     ['fugitive', 'gitgutter', 'filename'],
-            \   ],
-            \   'right': [
-                \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
-                \     ['lineinfo'],
-                \     ['percent'],
-                \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
-                \   ]
-                    \ },
+        \   ],
+        \   'right': [
+            \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
+            \     ['lineinfo'],
+            \     ['percent'],
+            \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+        \   ]
+    \ },
     \ 'component_function': {
         \   'modified': 'MyModified',
         \   'readonly': 'MyReadonly',
@@ -48,61 +48,61 @@ function! MyFilename()
 
 function! MyFugitive()
     try
-    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-let _ = fugitive#head()
-    return strlen(_) ? ''._ : ''
-    endif
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+            let _ = fugitive#head()
+            return strlen(_) ? ''._ : ''
+        endif
     catch
     endtry
     return ''
-    endfunction
+endfunction
 
 function! MyFileformat()
     return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-    endfunction
+endfunction
 
 function! MyFiletype()
     return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-    endfunction
+endfunction
 
 function! MyFileencoding()
     return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-    endfunction
+endfunction
 
 function! MyMode()
     return winwidth('.') > 60 ? lightline#mode() : ''
-    endfunction
+endfunction
 
 function! MyGitGutter()
     if ! exists('*GitGutterGetHunkSummary')
     \ || ! get(g:, 'gitgutter_enabled', 0)
     \ || winwidth('.') <= 90
-    return ''
+        return ''
     endif
     let symbols = [' ', ' ', ' ']
     let hunks = GitGutterGetHunkSummary()
-if empty(hunks)
-    return ''
+    if empty(hunks)
+        return ''
     endif
     let ret = []
     for i in [0, 1, 2]
-    if hunks[i] > 0
-call add(ret, symbols[i] . hunks[i])
-    endif
+        if hunks[i] > 0
+            call add(ret, symbols[i] . hunks[i])
+        endif
     endfor
     return join(ret, ' ')
-    endfunction
+endfunction
 
 function! MyCharCode()
     if winwidth('.') <= 70
-    return ''
+        return ''
     endif
     redir => ascii
     silent! ascii
     redir END
 
     if match(ascii, 'NUL') != -1
-    return 'NUL'
+        return 'NUL'
     endif
 
     " Zero pad hex values
@@ -111,8 +111,8 @@ function! MyCharCode()
     let encoding = (&fenc == '' ? &enc : &fenc)
 
     if encoding == 'utf-8'
-    " Zero pad with 4 zeroes in unicode files
-    let nrformat = '0x%04x'
+        " Zero pad with 4 zeroes in unicode files
+        let nrformat = '0x%04x'
     endif
 
     " Get the character and the numeric value from the return value of :ascii
@@ -121,10 +121,10 @@ function! MyCharCode()
     let [str, char, nr; rest] = matchlist(ascii, '\v\<(.{-1,})\>\s*([0-9]+)')
 
     " Format the numeric value
-let nr = printf(nrformat, nr)
+    let nr = printf(nrformat, nr)
 
     return "'". char ."' ". nr
-    endfunction
+endfunction
 
 let g:lightline.tab = {
       \ 'active': [ 'tabnum', 'filename', 'modified' ],
@@ -138,8 +138,8 @@ let g:lightline.tab_component_function = {
       \ 'tabnum': 'lightline#tab#tabnum' }
 
 function! LightlineTabFilename(n) abort
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  let _ = pathshorten(expand('#'.buflist[winnr - 1].':f'))
-  return _ !=# '' ? _ : '[No Name]'
+    let buflist = tabpagebuflist(a:n)
+    let winnr = tabpagewinnr(a:n)
+    let _ = pathshorten(expand('#'.buflist[winnr - 1].':f'))
+    return _ !=# '' ? _ : '[No Name]'
 endfunction
