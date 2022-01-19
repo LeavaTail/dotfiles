@@ -8,16 +8,15 @@ SHELL       = /bin/bash
 
 deploy: ## Create symlink to home directory
 	-@echo '[$(TARGET)]    ==> Start to deploy dotfiles to home directory.'
+
+init: ## Setup environment settings
+	-@echo "[$(TARGET)]    ==> Initialize dotfiles."
 	-@git clone --recursive -submodules https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto" > ../$(ERRFILE) 2>&1
 	-@ echo -n "..."
 	-@cd $(HOME)/.zprezto && git checkout -q $(COMMIT) > $(ERRFILE) 2>&1
 	-@ echo -n "..."
 	@$(DOTPATH)/scripts/zinstall.sh > ../$(ERRFILE) 2>&1
 	-@ echo "..."
-	-@rm ../$(ERRFILE)
-
-init: ## Setup environment settings
-	-@echo "[$(TARGET)]    ==> Initialize dotfiles."
 	@patch "$(HOME)/.zprezto/runcoms/zpreztorc" < zprezto.patch > ../$(ERRFILE) 2>&1
 	-@ echo "..."
 	-@rm ../$(ERRFILE)
