@@ -116,10 +116,7 @@ dotfilesプロジェクトの全体像を下記に示す。
 * [coc](https://github.com/neoclide/coc.nvim)
 * [fzf](https://github.com/junegunn/fzf.vim)
 * [gtags](https://github.com/vim-scripts/gtags.vim)
-* [gen_tags](https://github.com/jsfaint/gen_tags.vim)
 * [vim-signature](https://github.com/kshenoy/vim-signature)
-* [vim-quickhl](https://github.com/t9md/vim-quickhl)
-* [vim-localrc](https://github.com/thinca/vim-localrc)
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [vim-toml](https://github.com/cespare/vim-toml)
 
