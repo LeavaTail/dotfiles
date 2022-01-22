@@ -74,12 +74,17 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | :--- | :-- | :---------- |
 | NORMAL | `s` | easymotion: 2-key find Motion |
 | NORMAL | `g/` | easymotion: N-key find Motion |
+| NORMAL | `\j` | easymotion: Line motions |
+| NORMAL | `\k` | easymotion: Line motions |
+| NORMAL | `<C-j>` | gtags: カーソル以下の定義元を探す |
+| NORMAL | `<C-k>` | gtags: カーソル以下の使用箇所を探す |
+| NORMAL | `<C-n>` | gtags: 次の検索結果 |
+| NORMAL | `<C-p>` | gtags: 前の検索結果 |
+| NORMAL | `<C-q>` | gtags: 検索結果画面を閉じる |
 | VISUAL | `s` | easymotion: 2-key find Motion |
 | VISUAL | `g/` | easymotion: N-key find Motion |
 | Operator Pending | `s` | easymotion: 2-key find Motion |
 | Operator Pending | `g/` | easymotion: N-key find Motion |
-| - | `\j` | easymotion: Line motions |
-| - | `\k` | easymotion: Line motions |
 
 ## Design
 
