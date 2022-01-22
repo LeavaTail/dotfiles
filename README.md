@@ -93,7 +93,9 @@ user@hostname:${WORK}/dotfiles$ make uninstall
 
 それぞれの設定ファイルについて説明します。
 
-## Overall
+**WIP** :construction
+
+## Design
 
 dotfilesプロジェクトの全体像を下記に示す。
 ![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall20220119.png)
@@ -120,7 +122,9 @@ dotfilesプロジェクトの全体像を下記に示す。
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [vim-toml](https://github.com/cespare/vim-toml)
 
-また、zshは下記のバージョンのzpreztoをベースとしている。
+### zsh
+
+下記のバージョンのzpreztoを利用する。
 
 * [zprezto](https://github.com/sorin-ionescu/prezto/commit/166cbe2fca25319db2551f0cc74a86c93259017d)
 
@@ -138,7 +142,7 @@ user@hostname:${WORK}/dotfiles$ curl -sL https://deb.nodesource.com/setup_lts.x 
 
 **Q2.** Tigで「`Failed run the diff-highlight problem: diff-highlight`」とエラーメッセージが出る
 
-diff-highlightへのパスが通っていない可能背があります。
+diff-highlightへのパスが通っていない可能性があります。
 
 ## Authors
 
