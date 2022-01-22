@@ -2,8 +2,6 @@
 set scrolloff=5
 " シンタックスハイライトを有効にする
 syntax enable
-" マルチバイト文字に対応
-set ambiwidth=double
 " 行番号を表示
 set number
 " 右下に表示される行/列の番号を表示する
@@ -48,3 +46,8 @@ set shiftwidth=8
 set smarttab
 " autoindentと同様だがCライクのインデント
 set smartindent
+
+" マルチバイト文字に対応
+if !has('nvim')
+	set ambiwidth=double
+endif
