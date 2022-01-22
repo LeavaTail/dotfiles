@@ -14,7 +14,6 @@ Linux用の設定ファイル群
 * zsh
 * tmux
 * vim
-* byobu
 * tig
 
 ## Requirements
@@ -24,7 +23,6 @@ Linux用の設定ファイル群
 * vim (>=8.0)
 * zsh (>=4.3.11)
 * tmux (>=1.9)
-* Byobu
 * nodejs (>=12.12)
 
 ## Start-Up
