@@ -91,7 +91,7 @@ user@hostname:${WORK}/dotfiles$ make uninstall
 
 それぞれの設定ファイルについて説明します。
 
-**WIP** :construction
+🚧 **WIP** 🚧
 
 ## Design
 
