@@ -3,26 +3,31 @@
 ![Version](https://img.shields.io/github/tag/LeavaTail/dotfiles.svg)
 ![CI](https://github.com/LeavaTail/dotfiles/workflows/CI/badge.svg)
 
-Linux用の設定ファイル群
-
-## Description
-
-![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220119.png)
-
-このリポジトリには、以下の設定ファイルが保存されています。
+Linux用の設定ファイル群  
+デフォルトの場合には、次のソフトウェアの設定ファイルが展開されます。
 
 * zsh
 * tmux
-* vim
+* Vim (Neovim)
 * tig
+
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220119.png)
+
+## System Requirements
+
+次のソフトウェアバージョンにて動作することを確認しています。
+
+* Ubuntu Base 18.04
+* Ubuntu Base 20.04
 
 ## Requirements
 
+スクリプトを用いて自動デプロイをする場合、次のソフトウェアが必要になります。
+
 * git
 * make
-* vim (>=8.0)
+* Neovim
 * zsh (>=4.3.11)
-* tmux (>=1.9)
 * nodejs (>=12.12)
 
 ## Start-Up
@@ -43,55 +48,38 @@ user@hostname:${WORK}/dotfiles$ make uninstall
 
 ## Commands
 
-`make deploy`
+dotfilesのトップディレクトリに次のようなMakeターゲットを用意している。
 
-設定ファイルをデプロイする
-
-`make list`
-
-リンクされるドットファイルをリストする
-
-`make init`
-
-各種アプリケーションの設定ファイル以外の環境設定などを実施する
-
-`make check`
-
-デプロイに必要なパッケージが揃っているかどうかを確認する
-
-`make install`
-
-設定ファイルをデプロイし、各種アプリケーションの初期設定を実施する
-
-`make update`
-
-設定ファイルをリモートの最新リポジトリの状態に更新する
-
-`make uninstall`
-
-デプロイされたドットファイルのみ削除する
-
-`make clean`
-
-該当するドットファイルに関連するすべてのファイルを削除する
-
-`make pretest`
-
-ドットファイルが正常に展開されたか検証する
-
-`make test`
-
-ドットファイルが正常に展開され、期待した動作をするかどうか検証する
-
-`make help`
-
-ターゲットの詳細説明を表示する
+* `make deploy`: 設定ファイルをデプロイする
+* `make list`: リンクされるドットファイルをリストする
+* `make init`: 各種アプリケーションの設定ファイル以外の環境設定などを実施する
+* `make check`: デプロイに必要なパッケージが揃っているかどうかを確認する
+* `make install`: 設定ファイルをデプロイし、各種アプリケーションの初期設定を実施する
+* `make update`: 設定ファイルをリモートの最新リポジトリの状態に更新する
+* `make uninstall`: デプロイされたドットファイルのみ削除する
+* `make clean`: 該当するドットファイルに関連するすべてのファイルを削除する
+* `make pretest`: ドットファイルが正常に展開されたか検証する
+* `make test`: ドットファイルが正常に展開され、期待した動作をするかどうか検証する
+* `make help`: ターゲットの詳細説明を表示する
 
 ## Usage
 
 それぞれの設定ファイルについて説明します。
 
-🚧 **WIP** 🚧
+### vim
+
+次のキーバインドが追加されています。
+
+| Mode | Key | Description |
+| :--- | :-- | :---------- |
+| NORMAL | `s` | easymotion: 2-key find Motion |
+| NORMAL | `g/` | easymotion: N-key find Motion |
+| VISUAL | `s` | easymotion: 2-key find Motion |
+| VISUAL | `g/` | easymotion: N-key find Motion |
+| Operator Pending | `s` | easymotion: 2-key find Motion |
+| Operator Pending | `g/` | easymotion: N-key find Motion |
+| - | `\j` | easymotion: Line motions |
+| - | `\k` | easymotion: Line motions |
 
 ## Design
 
@@ -104,9 +92,7 @@ dotfilesプロジェクトの全体像を下記に示す。
 1. `make deploy`を実行すると、各設定ファイルに対してシンボリックリンクを作成する
 2. `make init`を実行すると、zpreztoをGitHubからクローンし、独自のパッチを当てる
 
-新規にインストールするプラグインは以下の通り。
-
-### vim
+Vimは、次のプラグインを新規にインストールする。
 
 * [dein](https://github.com/Shougo/dein.vim)
 * [vimproc](https://github.com/Shougo/vimproc.vim)
@@ -120,9 +106,7 @@ dotfilesプロジェクトの全体像を下記に示す。
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [vim-toml](https://github.com/cespare/vim-toml)
 
-### zsh
-
-下記のバージョンのzpreztoを利用する。
+zshは、下記のバージョンのzpreztoを利用する。
 
 * [zprezto](https://github.com/sorin-ionescu/prezto/commit/166cbe2fca25319db2551f0cc74a86c93259017d)
 
