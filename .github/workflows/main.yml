@@ -39,6 +39,10 @@ jobs:
           curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
           sudo apt-get install nodejs
 
+      - name: Set diff-highligh to PATH
+        run: |
+          sudo ./tig/scripts/link_diff-highlight.sh "/usr/local/bin"
+
       - name: Clean develop environments
         run:  make clean
 
