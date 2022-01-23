@@ -1,0 +1,4 @@
+# TOML用のシンタックス
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']

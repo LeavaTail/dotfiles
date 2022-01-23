@@ -3,38 +3,32 @@
 ![Version](https://img.shields.io/github/tag/LeavaTail/dotfiles.svg)
 ![CI](https://github.com/LeavaTail/dotfiles/workflows/CI/badge.svg)
 
-Linux用の設定ファイル群
-
-## Description
-
-![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20191214.png)
-
-このリポジトリには、以下の設定ファイルが保存されています。
+Linux用の設定ファイル群  
+デフォルトの場合には、次のソフトウェアの設定ファイルが展開されます。
 
 * zsh
 * tmux
-* vim
-* byobu
+* Vim (Neovim)
 * tig
+
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220119.png)
+
+## System Requirements
+
+次のソフトウェアバージョンにて動作することを確認しています。
+
+* Ubuntu Base 18.04
+* Ubuntu Base 20.04
 
 ## Requirements
 
+スクリプトを用いて自動デプロイをする場合、次のソフトウェアが必要になります。
+
 * git
 * make
-* vim (>=8.0)
+* Neovim
 * zsh (>=4.3.11)
-* tmux (>=1.9)
-* Byobu
 * nodejs (>=12.12)
-
-最新の情報は下記を参照。
-
-* [common Required packages](docs/Requirements_common)
-* [about zsh Required packages](docs/Requirements_zsh)
-* [about vim Required packages](docs/Requirements_vim)
-* [about tmux Required packages](docs/Requirements_tmux)
-* [about byobu Required packages](docs/Requirements_byobu)
-* [about tig Required packages](docs/Requirements_tig)
 
 ## Start-Up
 
@@ -54,82 +48,70 @@ user@hostname:${WORK}/dotfiles$ make uninstall
 
 ## Commands
 
-`make deploy`
+dotfilesのトップディレクトリに次のようなMakeターゲットを用意している。
 
-設定ファイルをデプロイする
-
-`make list`
-
-リンクされるドットファイルをリストする
-
-`make init`
-
-各種アプリケーションの設定ファイル以外の環境設定などを実施する
-
-`make check`
-
-デプロイに必要なパッケージが揃っているかどうかを確認する
-
-`make install`
-
-設定ファイルをデプロイし、各種アプリケーションの初期設定を実施する
-
-`make update`
-
-設定ファイルをリモートの最新リポジトリの状態に更新する
-
-`make uninstall`
-
-デプロイされたドットファイルのみ削除する
-
-`make clean`
-
-該当するドットファイルに関連するすべてのファイルを削除する
-
-`make test`
-
-ドットファイルが正常に展開されたか検証する
-
-`make help`
-
-ターゲットの詳細説明を表示する
+* `make deploy`: 設定ファイルをデプロイする
+* `make list`: リンクされるドットファイルをリストする
+* `make init`: 各種アプリケーションの設定ファイル以外の環境設定などを実施する
+* `make check`: デプロイに必要なパッケージが揃っているかどうかを確認する
+* `make install`: 設定ファイルをデプロイし、各種アプリケーションの初期設定を実施する
+* `make update`: 設定ファイルをリモートの最新リポジトリの状態に更新する
+* `make uninstall`: デプロイされたドットファイルのみ削除する
+* `make clean`: 該当するドットファイルに関連するすべてのファイルを削除する
+* `make pretest`: ドットファイルが正常に展開されたか検証する
+* `make test`: ドットファイルが正常に展開され、期待した動作をするかどうか検証する
+* `make help`: ターゲットの詳細説明を表示する
 
 ## Usage
 
 それぞれの設定ファイルについて説明します。
 
-## Overall
+### vim
+
+次のキーバインドが追加されています。
+
+| Mode | Key | Description |
+| :--- | :-- | :---------- |
+| NORMAL | `s` | easymotion: 2-key find Motion |
+| NORMAL | `g/` | easymotion: N-key find Motion |
+| NORMAL | `\j` | easymotion: Line motions |
+| NORMAL | `\k` | easymotion: Line motions |
+| NORMAL | `<C-j>` | gtags: カーソル以下の定義元を探す |
+| NORMAL | `<C-k>` | gtags: カーソル以下の使用箇所を探す |
+| NORMAL | `<C-n>` | gtags: 次の検索結果 |
+| NORMAL | `<C-p>` | gtags: 前の検索結果 |
+| NORMAL | `<C-q>` | gtags: 検索結果画面を閉じる |
+| VISUAL | `s` | easymotion: 2-key find Motion |
+| VISUAL | `g/` | easymotion: N-key find Motion |
+| Operator Pending | `s` | easymotion: 2-key find Motion |
+| Operator Pending | `g/` | easymotion: N-key find Motion |
+
+## Design
 
 dotfilesプロジェクトの全体像を下記に示す。
-![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall.png)
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall20220119.png)
 
 この設定ファイルは、zsh環境に[zprezto](https://github.com/sorin-ionescu/prezto)フレームワーク、Vim環境に[dein](https://github.com/Shougo/dein.vim)プラグインマネージャを別途使用している。
+そのため、本dotfilesのインストール手順は2つのフェーズ(`deploy`と`init`)に分割している。
 
-1. `make deploy`を実行すると、各環境に設定ファイルのシンボリックリンクを作成し、zprezto/tpm/deinをGitHubからクローンする。
-2. `make init`を実行すると、deinで該当するVimプラグインをインストール、tpmで該当するtmuxプラグインをインストールする。
+1. `make deploy`を実行すると、各設定ファイルに対してシンボリックリンクを作成する
+2. `make init`を実行すると、zpreztoをGitHubからクローンし、独自のパッチを当てる
 
-新規にインストールするプラグインは以下の通り。
-
-### vim
+Vimは、次のプラグインを新規にインストールする。
 
 * [dein](https://github.com/Shougo/dein.vim)
 * [vimproc](https://github.com/Shougo/vimproc.vim)
-* [onedark](https://github.com/joshdick/onedark.vim)
+* [vim-horizon](https://github.com/ntk148v/vim-horizon)
 * [vim-easymotion](github.com/easymotion/vim-easymotion)
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 * [coc](https://github.com/neoclide/coc.nvim)
 * [fzf](https://github.com/junegunn/fzf.vim)
 * [gtags](https://github.com/vim-scripts/gtags.vim)
-* [gen_tags](https://github.com/jsfaint/gen_tags.vim)
 * [vim-signature](https://github.com/kshenoy/vim-signature)
-* [vim-quickhl](https://github.com/t9md/vim-quickhl)
-* [vim-localrc](https://github.com/thinca/vim-localrc)
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [vim-toml](https://github.com/cespare/vim-toml)
-* [previm](https://github.com/previm/previm)
-* [open-browser](https://github.com/tyru/open-browser.vim)
 
-また、zshは下記のバージョンのzpreztoをベースとしている。
+zshは、下記のバージョンのzpreztoを利用する。
 
 * [zprezto](https://github.com/sorin-ionescu/prezto/commit/166cbe2fca25319db2551f0cc74a86c93259017d)
 
@@ -142,12 +124,12 @@ nodejsのバージョンが古い可能性があります。
 公式手順を参考に最新のnodefsをインストールしてみてください。
 
 ```shell
-user@hostname:${WORK}/dotfiles$ curl -sfLS install-node.vercel.app/lts | sh
+user@hostname:${WORK}/dotfiles$ curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 ```
 
 **Q2.** Tigで「`Failed run the diff-highlight problem: diff-highlight`」とエラーメッセージが出る
 
-diff-highlightへのパスが通っていない可能背があります。
+diff-highlightへのパスが通っていない可能性があります。
 
 ## Authors
 

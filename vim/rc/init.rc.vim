@@ -1,0 +1,53 @@
+" 5行余裕を持たせてスクロール
+set scrolloff=5
+" シンタックスハイライトを有効にする
+syntax enable
+" 行番号を表示
+set number
+" 右下に表示される行/列の番号を表示する
+set ruler
+" タイトルをウィンドウ枠に表示しない
+set notitle
+" タブバーを常に表示
+set showtabline=2
+" 不可視文字を表示
+set list
+" 不可視文字の出力方法を変更
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+" ステータスライン
+set laststatus=2
+" メッセージ表示欄
+set cmdheight=2
+" コマンドを画面最下部に表示する
+set showcmd
+" 行を強調表示
+set cursorline
+" 対応括弧に<と>のペアを追加
+set matchpairs& matchpairs+=<:>
+" 対応括弧のハイライトを表示する
+set showmatch
+" ウインドウの幅が長い行は折り返す
+set wrap
+" インデントをshiftwidthの倍数に丸める
+set shiftround
+" 補完の際の大文字小文字の区別しない
+set infercase
+" 変更中のファイルでも、保存しないで他のファイルを表示
+set hidden
+" 新しく開く代わりにすでに開いてあるバッファを開く
+set switchbuf=useopen
+" 編集中のファイルが変更されたら自動で読み直す
+set autoread
+" タブ文字幅
+set tabstop=8
+" 自動インデントの幅
+set shiftwidth=8
+" 行頭の余白内で Tab を打ち込むとshiftwidthの数だけインデントする
+set smarttab
+" autoindentと同様だがCライクのインデント
+set smartindent
+
+" マルチバイト文字に対応
+if !has('nvim')
+	set ambiwidth=double
+endif

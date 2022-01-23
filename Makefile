@@ -1,26 +1,21 @@
-DOTPATH     := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-EXCLUSIONS  := .DS_Store .git .gitmodules .travis.yml
-UNSUPPORTED := vcs byobu emacs screen tex
-DISTRIBUTION:= dist
-DOTDIRS     := $(shell ls -Fr $(DISTRIBUTION) | grep / | sed -e "s/\///g")
-DOTFILES    := $(filter-out $(EXCLUSIONS) $(UNSUPPORTED) , $(DOTDIRS))
+include common/basic.mk
 
-.PHONY := all deploy list init install update uninstall clean test help
-.DEFAULT_GOAL := help
+DISTRIBUTION  := tig tmux vim zsh # byobu
+
 
 all:
-	
+
 deploy: ## Create symbolic link to your local directory.
-	@$(foreach val, $(DOTFILES), $(MAKE) deploy -C $(DISTRIBUTION)/$(val);)
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 list: ## Show dot files in this repository
-	@$(foreach val, $(DOTFILES), $(MAKE) list -C $(DISTRIBUTION)/$(val);)
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ --no-print-directory -C $(val);)
 
 init: ## Setup environment settings
-	@$(foreach val, $(DOTFILES), $(MAKE) init -C $(DISTRIBUTION)/$(val);)
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 install: check deploy init ## Run make check, deploy, init
-	@./script/errorlog
+	@$(BASEPATH)/scripts/errorlog.sh
 
 update: ## Fetch changes for this repo
 	git pull origin master
@@ -30,20 +25,16 @@ update: ## Fetch changes for this repo
 
 uninstall: ## Remove deployed dotfile.
 	@echo 'Remove deployed dotfile in home directory.'
-	@$(foreach val, $(DOTFILES), $(MAKE) uninstall -C $(DISTRIBUTION)/$(val);)
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 check: ## Check required package in your system.
 	@echo 'Check required package.'
-	@./script/checkpackage ./docs/
+	-@$(BASEPATH)/scripts/checkpackage.sh common
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ --no-print-directory -C $(val);)
 
 clean: ## Remove all dotfiles
 	@echo 'Remove all dotfiles in home directory.'
-	@$(foreach val, $(DOTFILES), $(MAKE) clean -C $(DISTRIBUTION)/$(val);)
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 test: ## Test dotfiles and init script
-	@$(foreach val, $(DOTFILES), $(MAKE) test -C $(DISTRIBUTION)/$(val);)
-
-help: ## Self-documented Makefile
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
-		| sort \
-		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ --no-print-directory -C $(val);)

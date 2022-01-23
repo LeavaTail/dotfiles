@@ -1,0 +1,48 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# 非同期処理
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+# カラースキーム
+[[plugins]]
+repo = 'ntk148v/vim-horizon'
+hook_add= 'source ~/.vim/plugins/horizon.rc.vim'
+
+[[plugins]]
+repo = 'Lokaltog/vim-easymotion'
+hook_add= 'source ~/.vim/plugins/easymotion.rc.vim'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+'''
+
+[[plugins]]
+repo = "neoclide/coc.nvim"
+merge = 0
+rev = "release"
+#hook_add= 'source ~/.vim/plugins/coc.rc.vim'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+
+[[plugins]]
+repo = 'lighttiger2505/gtags.vim'
+hook_add= 'source ~/.vim/plugins/gtags.rc.vim'
+
+# visualize
+[[plugins]]
+repo = 'kshenoy/vim-signature'
+
+# ステータスバーのレイアウト変更
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = 'source ~/.vim/plugins/lightline.rc.vim'
