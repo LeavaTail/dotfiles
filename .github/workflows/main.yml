@@ -46,8 +46,24 @@ jobs:
       - name: Clean develop environments
         run:  make clean
 
+      - name: Intialize develop environments
+        run:  mkdir -p logs
+
       - name: Install each dotfiles
         run:  make install
 
+      - name: correct error logs
+        if: failure()
+        run: cp *.log logs/
+
       - name: Check whether each dotfiles is installed
-        run:  make test
+        run:  make test > logs/check_status_`date "+%Y%m%d_%H%M%S"`.log 2>&1
+
+      - name: update artifact
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: |
+            ./logs
+          retention-days: 1
