@@ -1,3 +1,5 @@
+set noshowmode
+
 let g:lightline = {
     \ 'colorscheme': 'horizon',
     \ 'mode_map': {'c': 'NORMAL'},
