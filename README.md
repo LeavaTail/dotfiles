@@ -81,10 +81,15 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | NORMAL | `<C-n>` | gtags: 次の検索結果 |
 | NORMAL | `<C-p>` | gtags: 前の検索結果 |
 | NORMAL | `<C-q>` | gtags: 検索結果画面を閉じる |
+| NORMAL | `gd` | coc: 関数が定義されている部分にジャンプ |
+| NORMAL | `gy` | coc: 関数が参照されている部分にジャンプ |
+| NORMAL | `K` | coc: ドキュメント表示 |
 | VISUAL | `s` | easymotion: 2-key find Motion |
 | VISUAL | `g/` | easymotion: N-key find Motion |
 | Operator Pending | `s` | easymotion: 2-key find Motion |
 | Operator Pending | `g/` | easymotion: N-key find Motion |
+| INSERT | `<TAB>` | coc: completion with characters ahead and navidate |
+| INSERT | `<C-Space>` | coc: Refresh |
 
 ## Design
 

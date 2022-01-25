@@ -25,7 +25,7 @@ hook_add = '''
 repo = "neoclide/coc.nvim"
 merge = 0
 rev = "release"
-#hook_add= 'source ~/.vim/plugins/coc.rc.vim'
+hook_add= 'source ~/.vim/plugins/coc.rc.vim'
 
 [[plugins]]
 repo = 'junegunn/fzf'
