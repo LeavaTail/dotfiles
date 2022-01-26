@@ -107,6 +107,7 @@ Vimは、次のプラグインを新規にインストールする。
 
 * [dein](https://github.com/Shougo/dein.vim)
 * [vimproc](https://github.com/Shougo/vimproc.vim)
+* [vimdoc-ja](https://github.com/vim-jp/vimdoc-ja)
 * [vim-horizon](https://github.com/ntk148v/vim-horizon)
 * [vim-easymotion](github.com/easymotion/vim-easymotion)
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
