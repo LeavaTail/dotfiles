@@ -48,6 +48,13 @@ hook_add= 'source ~/.vim/plugins/gtags.rc.vim'
 [[plugins]]
 repo = 'kshenoy/vim-signature'
 
+# ヤンクされた範囲を強調する
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+hook_add = '''
+  let g:highlightedyank_highlight_duration = 300
+'''
+
 # ステータスバーのレイアウト変更
 [[plugins]]
 repo = 'itchyny/lightline.vim'

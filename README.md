@@ -115,6 +115,7 @@ Vimは、次のプラグインを新規にインストールする。
 * [fzf](https://github.com/junegunn/fzf.vim)
 * [gtags](https://github.com/vim-scripts/gtags.vim)
 * [vim-signature](https://github.com/kshenoy/vim-signature)
+* [vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [vim-toml](https://github.com/cespare/vim-toml)
 
