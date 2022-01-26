@@ -84,6 +84,7 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | NORMAL | `gd` | coc: 関数が定義されている部分にジャンプ |
 | NORMAL | `gy` | coc: 関数が参照されている部分にジャンプ |
 | NORMAL | `K` | coc: ドキュメント表示 |
+| NORMAL | `<Space>e` | coc-explorer: エクスプローラの表示 |
 | VISUAL | `s` | easymotion: 2-key find Motion |
 | VISUAL | `g/` | easymotion: N-key find Motion |
 | Operator Pending | `s` | easymotion: 2-key find Motion |

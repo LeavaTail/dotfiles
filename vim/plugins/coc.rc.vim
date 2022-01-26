@@ -67,3 +67,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+let g:coc_global_extensions = [
+      \'coc-explorer', 
+\]
