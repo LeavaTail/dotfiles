@@ -31,6 +31,7 @@ hook_add = '''
 repo = "neoclide/coc.nvim"
 merge = 0
 rev = "release"
+if = '''executable('node') && has('nvim')'''
 hook_add= 'source ~/.vim/plugins/coc.rc.vim'
 
 [[plugins]]
