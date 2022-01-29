@@ -1,8 +1,8 @@
-" coc extension 関連の設定ファイルの読み込み
-function! s:source_rc(rc_file_name)
-	let rc_file = expand(g:runtimedir . '/plugins/'  . a:rc_file_name)
-	if filereadable(rc_file)
-		execute 'source' rc_file
+" rcファイルの読み込み
+function! s:source_plugin(plugin_file_name)
+	let plugin_file = expand(g:runtimedir . '/plugins/'  . a:plugin_file_name)
+	if filereadable(plugin_file)
+		execute 'source' plugin_file
 	endif
 endfunction
 
@@ -71,3 +71,5 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 let g:coc_global_extensions = [
       \'coc-explorer', 
 \]
+
+call s:source_plugin('coc-explorer.rc.vim')
