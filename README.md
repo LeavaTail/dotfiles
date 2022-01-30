@@ -85,6 +85,8 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | NORMAL | `gy` | coc: 関数が参照されている部分にジャンプ |
 | NORMAL | `K` | coc: ドキュメント表示 |
 | NORMAL | `<Space>e` | coc-explorer: エクスプローラの表示 |
+| NORMAL | `<S-Right>` | buftabline: 次のバッファを開く |
+| NORMAL | `<S-Left>` | buftabline: 前のバッファを開く |
 | VISUAL | `s` | easymotion: 2-key find Motion |
 | VISUAL | `g/` | easymotion: N-key find Motion |
 | Operator Pending | `s` | easymotion: 2-key find Motion |
@@ -116,6 +118,7 @@ Vimは、次のプラグインを新規にインストールする。
 * [gtags](https://github.com/vim-scripts/gtags.vim)
 * [vim-signature](https://github.com/kshenoy/vim-signature)
 * [vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
+* [vim-buftabline](https://github.com/ap/vim-buftabline)
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [vim-toml](https://github.com/cespare/vim-toml)
 

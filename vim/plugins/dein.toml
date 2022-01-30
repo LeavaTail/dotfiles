@@ -56,6 +56,11 @@ hook_add = '''
   let g:highlightedyank_highlight_duration = 300
 '''
 
+# Bufer list in the tab line
+[[plugins]]
+repo = 'ap/vim-buftabline'
+hook_add= 'source ~/.vim/plugins/buftabline.rc.vim'
+
 # ステータスバーのレイアウト変更
 [[plugins]]
 repo = 'itchyny/lightline.vim'
