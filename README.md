@@ -11,7 +11,7 @@ Linux用の設定ファイル群
 * Vim (Neovim)
 * tig
 
-![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220119.png)
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220201.png)
 
 ## System Requirements
 
