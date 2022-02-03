@@ -11,7 +11,7 @@ Linux用の設定ファイル群
 * Vim (Neovim)
 * tig
 
-![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220119.png)
+![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220201.png)
 
 ## System Requirements
 
@@ -81,10 +81,18 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | NORMAL | `<C-n>` | gtags: 次の検索結果 |
 | NORMAL | `<C-p>` | gtags: 前の検索結果 |
 | NORMAL | `<C-q>` | gtags: 検索結果画面を閉じる |
+| NORMAL | `gd` | coc: 関数が定義されている部分にジャンプ |
+| NORMAL | `gy` | coc: 関数が参照されている部分にジャンプ |
+| NORMAL | `K` | coc: ドキュメント表示 |
+| NORMAL | `<Space>e` | coc-explorer: エクスプローラの表示 |
+| NORMAL | `<S-Right>` | buftabline: 次のバッファを開く |
+| NORMAL | `<S-Left>` | buftabline: 前のバッファを開く |
 | VISUAL | `s` | easymotion: 2-key find Motion |
 | VISUAL | `g/` | easymotion: N-key find Motion |
 | Operator Pending | `s` | easymotion: 2-key find Motion |
 | Operator Pending | `g/` | easymotion: N-key find Motion |
+| INSERT | `<TAB>` | coc: completion with characters ahead and navidate |
+| INSERT | `<C-Space>` | coc: Refresh |
 
 ## Design
 
@@ -101,6 +109,7 @@ Vimは、次のプラグインを新規にインストールする。
 
 * [dein](https://github.com/Shougo/dein.vim)
 * [vimproc](https://github.com/Shougo/vimproc.vim)
+* [vimdoc-ja](https://github.com/vim-jp/vimdoc-ja)
 * [vim-horizon](https://github.com/ntk148v/vim-horizon)
 * [vim-easymotion](github.com/easymotion/vim-easymotion)
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
@@ -108,6 +117,8 @@ Vimは、次のプラグインを新規にインストールする。
 * [fzf](https://github.com/junegunn/fzf.vim)
 * [gtags](https://github.com/vim-scripts/gtags.vim)
 * [vim-signature](https://github.com/kshenoy/vim-signature)
+* [vim-highlightedyank](https://github.com/machakann/vim-highlightedyank)
+* [vim-buftabline](https://github.com/ap/vim-buftabline)
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [vim-toml](https://github.com/cespare/vim-toml)
 

@@ -25,7 +25,8 @@ hook_add = '''
 repo = "neoclide/coc.nvim"
 merge = 0
 rev = "release"
-#hook_add= 'source ~/.vim/plugins/coc.rc.vim'
+if = '''executable('node') && has('nvim')'''
+hook_add= 'source ~/.vim/plugins/coc.rc.vim'
 
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -41,6 +42,18 @@ hook_add= 'source ~/.vim/plugins/gtags.rc.vim'
 # visualize
 [[plugins]]
 repo = 'kshenoy/vim-signature'
+
+# ヤンクされた範囲を強調する
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+hook_add = '''
+  let g:highlightedyank_highlight_duration = 300
+'''
+
+# Bufer list in the tab line
+[[plugins]]
+repo = 'ap/vim-buftabline'
+hook_add= 'source ~/.vim/plugins/buftabline.rc.vim'
 
 # ステータスバーのレイアウト変更
 [[plugins]]

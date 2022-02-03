@@ -1,3 +1,5 @@
+set noshowmode
+
 let g:lightline = {
     \ 'colorscheme': 'horizon',
     \ 'mode_map': {'c': 'NORMAL'},
@@ -10,7 +12,7 @@ let g:lightline = {
             \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
             \     ['lineinfo'],
             \     ['percent'],
-            \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+            \     ['coc', 'fileformat', 'fileencoding', 'filetype'],
         \   ]
     \ },
     \ 'component_function': {
@@ -24,6 +26,7 @@ let g:lightline = {
         \   'mode': 'MyMode',
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
+        \   'coc': 'coc#status'
         \ },
     \ 'separator': {'left': "", 'right': ""},
     \ 'subseparator': {'left': "", 'right': ""}
