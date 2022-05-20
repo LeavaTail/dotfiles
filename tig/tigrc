@@ -1,5 +1,6 @@
 set commit-order	= default
 set diff-highlight	= true
+set diff-options	= -m --first-parent
 
 # Color
 color "    Issue: "		yellow	default
@@ -12,3 +13,6 @@ bind generic g	move-first-line
 bind generic E	view-grep
 bind generic G	move-last-line
 bind main    G	move-last-line
+
+# Main view
+set main-view = id:width=12 date author commit-title:graph=yes,refs=yes

@@ -1,25 +1,53 @@
-" Vim設定ファイルを格納するディレクトリ
-let g:runtimedir = expand('~/.vim')
+" Generic configuration
+set scrolloff=5
+syntax enable
+colorscheme desert
+set number
+set ruler
+set notitle
+set list
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set laststatus=2
+set cmdheight=1
+set showcmd
+set cursorline
+set matchpairs& matchpairs+=<:>
+set showmatch
+set wrap
+set shiftround
+set infercase
+set hidden
+set switchbuf=useopen
+set autoread
+set tabstop=8
+set shiftwidth=8
+set smarttab
+set smartindent
+set ambiwidth=double
 
-" rcファイルの読み込み
-function! s:source_rc(rc_file_name)
-	let rc_file = expand(g:runtimedir . '/rc/'  . a:rc_file_name)
-	if filereadable(rc_file)
-		execute 'source' rc_file
-	endif
-endfunction
+" charset
+set encoding=utf-8
+scriptencoding utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,euc-jp,iso-20220-jp
+set termencoding=utf-8
 
-" プラグインマネージャdeinの構築
-call s:source_rc('dein.rc.vim')
-" エンコーディング
-call s:source_rc('encoding.rc.vim')
-" Vimの初期環境設定
-call s:source_rc('init.rc.vim')
-" メタファイル
-call s:source_rc('metafile.rc.vim')
-" キーボードやマウス関連の設定
-call s:source_rc('io.rc.vim')
-" キーマッピングの環境構築
-call s:source_rc('mapping.rc.vim')
-" 検索モード時の環境構築
-call s:source_rc('search.rc.vim')
+" Interface
+set backspace=indent,eol,start
+set clipboard+=unnamed
+set mouse=a
+set vb t_vb=
+set novisualbell
+
+" Metafile for Vim
+set noswapfile
+set nobackup
+set noundofile
+
+" search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set wrapscan
+set wildmenu wildmode=list:full

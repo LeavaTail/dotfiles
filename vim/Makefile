@@ -27,7 +27,7 @@ deploy: ## Create symlink to home directory
 	-@echo -n '...'
 	-@mkdir -p $(XDG_PATH)
 	-@ln -s $(CONFDIR) $(NVIMDIR) > ../$(ERRFILE) 2>&1
-	-@$(foreach val, $(VIMCONF), ln -sfn $(DOTPATH)/$(val) $(CONFDIR)/$(NVIMCONF) > ../$(ERRFILE) 2>&1;)
+	-@$(foreach val, $(NVIMCONF), ln -sfn $(DOTPATH)/$(val) $(CONFDIR)/$(NVIMCONF) > ../$(ERRFILE) 2>&1;)
 	-@echo '...'
 	-@rm ../$(ERRFILE)
 
