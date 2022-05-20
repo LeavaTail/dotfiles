@@ -94,6 +94,16 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | INSERT | `<TAB>` | coc: completion with characters ahead and navidate |
 | INSERT | `<C-Space>` | coc: Refresh |
 
+### tig
+
+次のキーバインドが追加されています。
+
+| View | Key | Description |
+| :--- | :-- | :---------- |
+| generic | `g` | カーソルを最初の行に移動する |
+| generic | `E` | grepビューを表示する |
+| generic | `G` | カーソルを最後の行に移動する |
+
 ## Design
 
 dotfilesプロジェクトの全体像を下記に示す。
