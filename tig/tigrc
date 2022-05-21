@@ -1,6 +1,7 @@
 set commit-order	= default
 set diff-highlight	= true
 set diff-options	= -m --first-parent
+set ignore-case		= true
 
 # Color
 color "    Issue: "		yellow	default
