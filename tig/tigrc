@@ -16,6 +16,7 @@ bind generic G	move-last-line
 bind main    !  ?git revert %(commit)
 bind main    R  ?git rebase -i %(commit)
 bind diff    R  ?git rebase -i %(commit)
+bind status  +  !git commit --amend --allow-empty
 
 # Main view
 set main-view = id:width=12 date author commit-title:graph=yes,refs=yes

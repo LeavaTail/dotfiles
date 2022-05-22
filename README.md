@@ -106,6 +106,7 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | main | `!` | コミットをrevertする |
 | main | `R` | コミットをインタラクティブにrebaseする |
 | diff | `R` | コミットをインタラクティブにrebaseする |
+| status | `+` | 直前のコミットを修正する |
 
 ## Design
 
