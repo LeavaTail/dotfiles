@@ -19,6 +19,8 @@ bind main    !  ?git revert %(commit)
 bind diff    !  ?git revert %(commit)
 bind main    R  ?git rebase -i %(commit)
 bind diff    R  ?git rebase -i %(commit)
+bind main    C  ?git cherry-pick -x %(commit)
+bind diff    C  ?git cherry-pick -x %(commit)
 bind status  +  !git commit --amend --allow-empty
 
 # Main view

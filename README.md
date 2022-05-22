@@ -108,6 +108,8 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | diff | `!` | コミットをrevertする |
 | main | `R` | コミットをインタラクティブにrebaseする |
 | diff | `R` | コミットをインタラクティブにrebaseする |
+| main | `C` | コミットをcherry-pickする |
+| diff | `C` | コミットをcherry-pickする |
 | status | `+` | 直前のコミットを修正する |
 
 ## Design
