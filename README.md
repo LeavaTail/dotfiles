@@ -103,6 +103,7 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | generic | `g` | カーソルを最初の行に移動する |
 | generic | `E` | grepビューを表示する |
 | generic | `G` | カーソルを最後の行に移動する |
+| generic | `C-G` | ビューをリロードおよびリフレッシュする |
 | main | `!` | コミットをrevertする |
 | main | `R` | コミットをインタラクティブにrebaseする |
 | diff | `R` | コミットをインタラクティブにrebaseする |

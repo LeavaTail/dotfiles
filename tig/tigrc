@@ -2,6 +2,7 @@ set commit-order	= default
 set diff-highlight	= true
 set diff-options	= -m --first-parent
 set ignore-case		= true
+set refresh-mode	= auto
 
 # Color
 color "    Issue: "		yellow	default
@@ -13,6 +14,7 @@ color "    Conflicts: "	red default bold
 bind generic g	move-first-line
 bind generic E	view-grep
 bind generic G	move-last-line
+bind generic <Ctrl-g> refresh
 bind main    !  ?git revert %(commit)
 bind main    R  ?git rebase -i %(commit)
 bind diff    R  ?git rebase -i %(commit)
