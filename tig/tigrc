@@ -22,4 +22,4 @@ bind diff    R  ?git rebase -i %(commit)
 bind status  +  !git commit --amend --allow-empty
 
 # Main view
-set main-view = id:width=12 date author commit-title:graph=yes,refs=yes
+set main-view = id:width=12 date author:width=16 commit-title:graph=yes,refs=yes
