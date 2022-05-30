@@ -105,6 +105,7 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | generic | `G` | カーソルを最後の行に移動する |
 | generic | `C-G` | ビューをリロードおよびリフレッシュする |
 | main | `!` | コミットをrevertする |
+| diff | `!` | コミットをrevertする |
 | main | `R` | コミットをインタラクティブにrebaseする |
 | diff | `R` | コミットをインタラクティブにrebaseする |
 | status | `+` | 直前のコミットを修正する |
