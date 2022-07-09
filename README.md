@@ -160,6 +160,29 @@ user@hostname:${WORK}/dotfiles$ curl -sL https://deb.nodesource.com/setup_lts.x 
 
 diff-highlightへのパスが通っていない可能性があります。
 
+**Q3.** NeoVimで「E121: Undefined variable: v:lua」とエラーメッセージが出る
+
+NeoVimのバージョンが古い可能性があります。
+
+```shell
+user@hostname:${WORK}/dotfiles$ nvim --version
+NVIM v0.4.3
+Build type: Release
+LuaJIT 2.1.0-beta3
+Compilation: /usr/bin/cc -g -O2 -fdebug-prefix-map=/build/neovim-gOb7vg/neovim-0.4.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=1 -DDISABLE_LOG -Wdate-time -D_FORTIFY_SOURCE=1 -O2 -DNDEBUG -DMIN_LOG_LEVEL=3 -Wall -Wextra -pedantic -Wno-unused-parameter -Wstrict-prototypes -std=gnu99 -Wshadow -Wconversion -Wmissing-prototypes -Wimplicit-fallthrough -Wvla -fstack-protector-strong -fdiagnostics-color=always -DINCLUDE_GENERATED_DECLARATIONS -D_GNU_SOURCE -DNVIM_MSGPACK_HAS_FLOAT32 -DNVIM_UNIBI_HAS_VAR_FROM -I/build/neovim-gOb7vg/neovim-0.4.3/build/config -I/build/neovim-gOb7vg/neovim-0.4.3/src -I/usr/include -I/usr/include/lua5.1 -I/build/neovim-gOb7vg/neovim-0.4.3/build/src/nvim/auto -I/build/neovim-gOb7vg/neovim-0.4.3/build/include
+Compiled by team+vim@tracker.debian.org
+
+Features: +acl +iconv +tui
+See ":help feature-compile"
+
+   system vimrc file: "$VIM/sysinit.vim"
+  fall-back for $VIM: "/usr/share/nvim"
+
+Run :checkhealth for more info
+```
+
+0.5.0より前のバージョンの場合、NeoVimのバージョンアップを検討してみてください。
+
 ## Authors
 
 [LeavaTail](https://github.com/LeavaTail)
