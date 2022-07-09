@@ -30,7 +30,7 @@ uninstall: ## Remove deployed dotfile.
 
 check: ## Check required package in your system.
 	@echo 'Check required package.'
-	-@$(BASEPATH)/scripts/checkpackage.sh common
+	@(cd common; $(BASEPATH)/scripts/checkpackage.sh common)
 	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ --no-print-directory -C $(val);)
 
 clean: ## Remove all dotfiles
