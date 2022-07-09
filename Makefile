@@ -6,6 +6,7 @@ DISTRIBUTION  := tig tmux vim zsh # byobu
 all:
 
 deploy: ## Create symbolic link to your local directory.
+	@./common/scripts/stashfile.sh ${DISTRIBUTION}
 	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 list: ## Show dot files in this repository
