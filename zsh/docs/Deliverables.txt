@@ -1,0 +1,7 @@
+.zlogin
+.zlogout
+.zprezto/
+.zpreztorc
+.zprofile
+.zshenv
+.zshrc
