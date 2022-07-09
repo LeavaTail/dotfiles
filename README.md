@@ -115,6 +115,7 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 ## Design
 
 dotfilesプロジェクトの全体像を下記に示す。
+
 ![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall20220119.png)
 
 この設定ファイルは、zsh環境に[zprezto](https://github.com/sorin-ionescu/prezto)フレームワーク、Vim環境に[dein](https://github.com/Shougo/dein.vim)プラグインマネージャを別途使用している。
