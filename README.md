@@ -10,6 +10,7 @@ Linux用の設定ファイル群
 * tmux
 * Vim (Neovim)
 * tig
+* gdb
 
 ![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220201.png)
 
