@@ -5,7 +5,7 @@
 #
 # description:
 #   install zprezto.
-rm -vrf /home/runner/.zsh*
+rm -vrf ${HOME}/.zsh*
 
 setopt EXTENDED_GLOB
 for rcfile in "${HOME}"/.zprezto/runcoms/^README.md(.N); do

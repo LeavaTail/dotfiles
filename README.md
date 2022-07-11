@@ -10,6 +10,7 @@ Linux用の設定ファイル群
 * tmux
 * Vim (Neovim)
 * tig
+* gdb
 
 ![demo](https://github.com/LeavaTail/dotfiles/blob/images/vim20220201.png)
 
@@ -35,7 +36,7 @@ Linux用の設定ファイル群
 下記のコマンドを実行するだけでデプロイが完了します。
 
 ```shell
-user@hostname:${WORK}/dotfiles$ make install
+make install
 ```
 
 ## Clean-up
@@ -43,7 +44,7 @@ user@hostname:${WORK}/dotfiles$ make install
 デプロイした設定ファイルを削除するには、以下のコマンドを実行する必要があります。
 
 ```shell
-user@hostname:${WORK}/dotfiles$ make uninstall
+make uninstall
 ```
 
 ## Commands
@@ -108,11 +109,14 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | diff | `!` | コミットをrevertする |
 | main | `R` | コミットをインタラクティブにrebaseする |
 | diff | `R` | コミットをインタラクティブにrebaseする |
+| main | `C` | コミットをcherry-pickする |
+| diff | `C` | コミットをcherry-pickする |
 | status | `+` | 直前のコミットを修正する |
 
 ## Design
 
 dotfilesプロジェクトの全体像を下記に示す。
+
 ![demo](https://github.com/LeavaTail/dotfiles/blob/images/overall20220119.png)
 
 この設定ファイルは、zsh環境に[zprezto](https://github.com/sorin-ionescu/prezto)フレームワーク、Vim環境に[dein](https://github.com/Shougo/dein.vim)プラグインマネージャを別途使用している。
@@ -151,12 +155,18 @@ nodejsのバージョンが古い可能性があります。
 公式手順を参考に最新のnodefsをインストールしてみてください。
 
 ```shell
-user@hostname:${WORK}/dotfiles$ curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 ```
 
 **Q2.** Tigで「`Failed run the diff-highlight problem: diff-highlight`」とエラーメッセージが出る
 
 diff-highlightへのパスが通っていない可能性があります。
+
+**Q3.** NeoVimで「`E121: Undefined variable: v:lua`」とエラーメッセージが出る
+
+NeoVimのバージョンが古い可能性があります。
+
+0.5.0より前のバージョンの場合、NeoVimのバージョンアップを検討してみてください。
 
 ## Authors
 

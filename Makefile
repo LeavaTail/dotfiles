@@ -1,11 +1,12 @@
 include common/basic.mk
 
-DISTRIBUTION  := tig tmux vim zsh # byobu
+DISTRIBUTION  := gdb tig tmux vim zsh # byobu
 
 
 all:
 
 deploy: ## Create symbolic link to your local directory.
+	@./common/scripts/stashfile.sh ${DISTRIBUTION}
 	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ -C $(val);)
 
 list: ## Show dot files in this repository
@@ -29,7 +30,7 @@ uninstall: ## Remove deployed dotfile.
 
 check: ## Check required package in your system.
 	@echo 'Check required package.'
-	-@$(BASEPATH)/scripts/checkpackage.sh common
+	@(cd common; $(BASEPATH)/scripts/checkpackage.sh common)
 	@$(foreach val, $(DISTRIBUTION), $(MAKE) $@ --no-print-directory -C $(val);)
 
 clean: ## Remove all dotfiles
