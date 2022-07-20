@@ -46,6 +46,10 @@ set shiftwidth=8
 set smarttab
 " autoindentと同様だがCライクのインデント
 set smartindent
+" ファイル名やディレクトリを補完するときに大文字と小文字が無視される
+set wildignorecase
+" 共通する最長の文字列を補完し、次からマッチを完全に補完する
+set wildmode=list:full
 
 " マルチバイト文字に対応
 if !has('nvim')
