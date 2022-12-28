@@ -111,6 +111,7 @@ dotfilesのトップディレクトリに次のようなMakeターゲットを�
 | diff | `R` | コミットをインタラクティブにrebaseする |
 | main | `C` | コミットをcherry-pickする |
 | diff | `C` | コミットをcherry-pickする |
+| main | `p` | HEADのブランチをリモートリポジトリにpushする |
 | status | `+` | 直前のコミットを修正する |
 
 ## Design
