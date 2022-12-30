@@ -23,6 +23,7 @@ bind main    C  ?git cherry-pick -x %(commit)
 bind diff    C  ?git cherry-pick -x %(commit)
 bind status  +  !git commit --amend --allow-empty
 bind main    P  ?git push -u %(remote) %(repo:head)
+bind status  C  !git commit --signoff
 
 # Main view
 set main-view = id:width=12 date author:width=16 commit-title:graph=yes,refs=yes
